@@ -1,23 +1,27 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Header from "./Header";
-import Sidebar from "./Sidebar";
-import Student from "./Student";
+import Home from "./Home";
+import Login from "./Login";
+import Profile from "./Profile";
 
 function App() {
     return (
         <Router>
             <div className="App">
                 <Switch>
-                    <Route path="/header">
+                    <Route path="/login">
                         <Header />
+                        <Login />
                     </Route>
 
-                    <Route path="/student">
-                        <Student />
+                    <Route path="/profile">
+                        <Header />
+                        <Profile />
                     </Route>
 
-                    <Route path="/sidebar">
-                        <Sidebar />
+                    <Route path="/">
+                        <Header />
+                        <Home />
                     </Route>
                 </Switch>
             </div>
