@@ -1,0 +1,29 @@
+.student__contentContainer {
+    border: 2px solid black;
+    border-radius: 12px;
+    background-color: #668cff;
+    margin-left: 64px;
+    width: 60%;
+    height: 440px;
+}
+
+.top__options {
+    display: flex;
+    flex-direction: row;
+    margin: 14px;
+    justify-content: right;
+}
+
+.style__button {
+    border: none;
+    border-radius: 6px;
+    background-color: #ffff00;
+    margin-right: 22px;
+}
+
+.style__input {
+    height: 18px;
+    width: 3cm;
+    border: none;
+    border-radius: 6px;
+}

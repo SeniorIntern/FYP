@@ -1,0 +1,15 @@
+.sidebar {
+    border: 2px solid black;
+    background-color: #668cff;
+    max-width: 3.4cm;
+}
+
+.sidebar__content {
+    display: flex;
+    flex-direction: column;
+}
+
+.navbar__options {
+    margin: 10px;
+    margin-bottom: 32px;
+}
