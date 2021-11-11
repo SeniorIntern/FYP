@@ -12,4 +12,6 @@
 .navbar__options {
     margin: 10px;
     margin-bottom: 52px;
+    color: inherit;
+    text-decoration: none;
 }

@@ -3,6 +3,8 @@ import Header from "./Header";
 import Home from "./Home";
 import Login from "./Login";
 import Profile from "./Profile";
+import Sidebar from "./Sidebar";
+import StudentAdd from "./StudentAdd";
 
 function App() {
     return (
@@ -17,6 +19,12 @@ function App() {
                     <Route path="/profile">
                         <Header />
                         <Profile />
+                    </Route>
+
+                    <Route path="/studentadd">
+                        <Header />
+                        <StudentAdd />
+                        <Sidebar />
                     </Route>
 
                     <Route path="/">
