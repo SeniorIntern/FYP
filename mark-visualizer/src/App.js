@@ -5,12 +5,17 @@ import Login from "./Login";
 import Profile from "./Profile";
 import Sidebar from "./Sidebar";
 import StudentAdd from "./StudentAdd";
+import TablePractice from "./TablePractice";
 
 function App() {
     return (
         <Router>
             <div className="App">
                 <Switch>
+                    <Route path="/TablePractice">
+                        <TablePractice />
+                    </Route>
+
                     <Route path="/login">
                         <Header />
                         <Login />
