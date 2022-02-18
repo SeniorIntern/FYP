@@ -8,14 +8,20 @@ function Header() {
         <div className="header">
             <div className="header__content">
                 <Link to="/">
-                    <img className="header__logo" src={logo} alt="contains logo" />
+                    <img
+                        className="header__logo"
+                        src={logo}
+                        alt="contains logo"
+                    />
                 </Link>
 
                 <div className="space__maker" />
 
                 <div className="header__option">
-                    <span className="option__above">Hello Guest</span>
-                    <span className="option__below">Sign In</span>
+                    <Link to="/Register">
+                        <span className="option__above">Hello Guest</span>
+                        <span className="option__below">Sign In</span>
+                    </Link>
                 </div>
 
                 <div className="header__option">

@@ -3,21 +3,20 @@ import Header from "./Header";
 import Home from "./Home";
 import Login from "./Login";
 import Profile from "./Profile";
+import Register from "./Register";
 import Sidebar from "./Sidebar";
 import StudentAdd from "./StudentAdd";
-import TablePractice from "./TablePractice";
 
 function App() {
     return (
         <Router>
             <div className="App">
                 <Switch>
-                    <Route path="/TablePractice">
-                        <TablePractice />
+                    <Route path="/register">
+                        <Register />
                     </Route>
 
                     <Route path="/login">
-                        <Header />
                         <Login />
                     </Route>
 
