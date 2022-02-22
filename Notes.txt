@@ -10,3 +10,6 @@ placeholder		#7A6666 @50%
 # Dependency
 react router dom
 npm install react-router-dom --save
+
+// crud video tutorial for student table data
+progress: 01:06:00
