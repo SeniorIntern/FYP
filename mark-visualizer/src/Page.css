@@ -1,5 +1,6 @@
 .styled-table {
     border-collapse: collapse;
+    border: 2px solid #668cff;
     margin: auto;
     font-size: 0.9em;
     font-family: sans-serif;
@@ -8,7 +9,7 @@
 }
 
 .styled-table thead tr {
-    background-color: #009879;
+    background-color: #668cff;
     color: #ffffff;
     text-align: left;
 }
@@ -22,12 +23,8 @@
     border-bottom: 1px solid #dddddd;
 }
 
-.styled-table tbody tr:nth-of-type(even) {
-    background-color: #f3f3f3;
-}
-
 .styled-table tbody tr:last-of-type {
-    border-bottom: 2px solid #009879;
+    border-bottom: 2px solid #668cff;
 }
 
 .btn {
@@ -48,17 +45,19 @@
 }
 
 .btn-delete {
-    background-color: #f44336;
+    background-color: red;
 }
 
 .btn-view {
-    background-color: #e7e7e7;
+    background-color: #668cff;
     color: black;
 }
 
 .btn-contact {
-    background-color: #e82764;
-    margin-left: auto;
+    border: 2px solid black;
+    color: black;
+    background-color: #ffff00;
+    margin-left: 50%;
     margin-right: auto;
-    margin-bottom: 10px;
+    margin-bottom: 2%;
 }

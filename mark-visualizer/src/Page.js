@@ -48,7 +48,7 @@ export const Page = () => {
                     {data.map((item, index) => {
                         return (
                             <tr key={item.id}>
-                                {/* <th scope="row">{index + 1} </th> */}
+                                <th scope="row">{index + 1} </th>
                                 <td>{item.s_id} </td>
                                 <td>{item.s_fname} </td>
                                 <td>{item.s_lname} </td>
@@ -67,7 +67,7 @@ export const Page = () => {
                                     >
                                         Delete
                                     </button>
-                                  
+
                                     <Link to={`/view/${item.id}`}>
                                         <button className="btn btn-view">
                                             View
