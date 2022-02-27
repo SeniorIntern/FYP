@@ -1,4 +1,4 @@
-.register {
+.login {
     background-color: white;
     height: 100vh;
     display: flex;
@@ -6,7 +6,7 @@
     align-items: center;
 }
 
-.registerContainer {
+.loginContainer {
     width: 300px;
     height: fit-content;
     display: flex;
@@ -14,7 +14,22 @@
     border-radius: 1rem;
     border: 2px solid black;
     padding: 20px;
-    margin-top: 6%;
+}
+
+.web__logo {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    object-fit: contain;
+    width: 100px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+input {
+    height: 30px;
+    margin-bottom: 10px;
+    background-color: white;
+    width: 98%;
 }
 
 .login__signInButton {

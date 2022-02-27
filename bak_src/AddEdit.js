@@ -8,7 +8,7 @@ import "./Sidebar.css";
 const initialState = {
     s_id: "",
     s_fname: "",
-    s_lname: "",
+    s_fname: "",
     c_id: "",
     c_name: "",
 };

@@ -6,7 +6,7 @@ import axios from "axios";
 import "./Page.css";
 import "./Sidebar.css";
 
-export const Page = () => {
+export const Programmes = () => {
     const [data, setData] = useState([]);
 
     const loadData = async () => {
@@ -54,50 +54,37 @@ export const Page = () => {
                 </div>
             </div>
 
-            <div className="page-container">
-                <div className="table__options">
-                    <input
-                        type="text"
-                        placeholder="Student ID"
-                        className="student__Input"
-                    />
-
-                    <Link to="/addContact">
-                        <button>Add Student</button>
-                    </Link>
-
-                    <Link>
-                        <button>Filter</button>
-                    </Link>
-                </div>
+            <div style={{ marginTop: "150px" }} className="page-container">
                 <table className="styled-table">
                     <thead>
                         <tr>
                             <th style={{ textAlign: "center" }}>S.NO</th>
-                            <th style={{ textAlign: "center" }}>Student ID</th>
-                            <th style={{ textAlign: "center" }}>First Name</th>
-                            <th style={{ textAlign: "center" }}>Last Name</th>
                             <th style={{ textAlign: "center" }}>Course ID</th>
                             <th style={{ textAlign: "center" }}>Course Name</th>
+                            <th style={{ textAlign: "center" }}>Module ID</th>
+                            <th style={{ textAlign: "center" }}>Module Name</th>
                             <th style={{ textAlign: "center" }}>Action</th>
                         </tr>
                     </thead>
+
                     <tbody>
                         {data.map((item, index) => {
                             return (
                                 <tr key={item.id}>
                                     <th scope="row">{index + 1} </th>
-                                    <td>{item.s_id} </td>
-                                    <td>{item.s_fname} </td>
-                                    <td>{item.s_lname} </td>
                                     <td>{item.c_id} </td>
                                     <td>{item.c_name} </td>
+                                    <td>{item.m_id} </td>
+                                    <td>{item.m_name} </td>
                                     <td>
                                         <Link to={`/update/${item.id}`}>
-                                            <button>Edit</button>
+                                            <button className="btn btn-edit">
+                                                Edit
+                                            </button>
                                         </Link>
 
                                         <button
+                                            className="btn btn-delete"
                                             onClick={() =>
                                                 deleteContact(item.id)
                                             }
@@ -106,7 +93,9 @@ export const Page = () => {
                                         </button>
 
                                         <Link to={`/view/${item.id}`}>
-                                            <button>View</button>
+                                            <button className="btn btn-view">
+                                                View
+                                            </button>
                                         </Link>
                                     </td>
                                 </tr>
@@ -119,4 +108,4 @@ export const Page = () => {
     );
 };
 
-export default Page;
+export default Programmes;

@@ -51,7 +51,9 @@ function Register() {
                 </button>
                 <p style={{ margin: "auto" }}>Already Registered?</p>
                 <Link to="./login">
-                    <button className="login__signInButton">LOGIN</button>
+                    <button className="login__signInButton">
+                        LOGIN you Account
+                    </button>
                 </Link>
             </div>
         </div>

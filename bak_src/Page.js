@@ -54,22 +54,14 @@ export const Page = () => {
                 </div>
             </div>
 
-            <div className="page-container">
-                <div className="table__options">
-                    <input
-                        type="text"
-                        placeholder="Student ID"
-                        className="student__Input"
-                    />
-
-                    <Link to="/addContact">
-                        <button>Add Student</button>
-                    </Link>
-
-                    <Link>
-                        <button>Filter</button>
-                    </Link>
-                </div>
+            <div style={{ marginTop: "150px" }} className="page-container">
+                <Link to="/addContact">
+                    <button className="btn btn-contact">
+                        Create New Profile
+                    </button>
+                </Link>
+                <button className="btn btn-contact">Filter</button>
+                <input type="text" placeholder="Student ID" />
                 <table className="styled-table">
                     <thead>
                         <tr>
@@ -94,10 +86,13 @@ export const Page = () => {
                                     <td>{item.c_name} </td>
                                     <td>
                                         <Link to={`/update/${item.id}`}>
-                                            <button>Edit</button>
+                                            <button className="btn btn-edit">
+                                                Edit
+                                            </button>
                                         </Link>
 
                                         <button
+                                            className="btn btn-delete"
                                             onClick={() =>
                                                 deleteContact(item.id)
                                             }
@@ -106,7 +101,9 @@ export const Page = () => {
                                         </button>
 
                                         <Link to={`/view/${item.id}`}>
-                                            <button>View</button>
+                                            <button className="btn btn-view">
+                                                View
+                                            </button>
                                         </Link>
                                     </td>
                                 </tr>
