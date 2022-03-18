@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Axios from "axios";
 import "./Register.css";
 import logo from "./img/logo.png";
@@ -20,6 +20,15 @@ function Register() {
             console.log(response);
         });
     };
+
+    // added later
+    /* 
+    useEffect(() => {
+        Axios.get("http://localhost:3000/login").then((response) => {
+            console.log(response);
+        });
+    }, []);
+    */
 
     return (
         <div className="register">

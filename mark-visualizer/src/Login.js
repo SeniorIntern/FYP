@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Axios from "axios";
 import "./Login.css";
 // additional imports for testing
@@ -13,6 +13,12 @@ function Login() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
+    // for testing
+    const [loginStatus, setLoginStatus] = useState("");
+
+    // added later
+    // Axios.defaults.withCredentials = true;
+
     const login = () => {
         // define variables username, password to use in backend
         Axios.post("http://localhost:3001/login", {
@@ -20,9 +26,12 @@ function Login() {
             password: password,
         }).then((response) => {
             if (response.data.message) {
-                alert("Wrong username/password combination");
+                // alert("Wrong username/password combination");
+                setLoginStatus(response.data.message);
             } else {
                 history.push("/page");
+                // added later
+                // setLoginStatus(response.data[0].username);
             }
         });
     };
@@ -48,6 +57,7 @@ function Login() {
                 <button onClick={login} className="login__signInButton">
                     Login
                 </button>
+                <h1>{loginStatus}</h1>
                 <p style={{ margin: "auto" }}>New User?</p>
                 <Link to="./Register">
                     <button className="login__registerButton">
