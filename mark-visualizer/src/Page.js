@@ -77,8 +77,8 @@ export const Page = () => {
                             <th style={{ textAlign: "center" }}>Student ID</th>
                             <th style={{ textAlign: "center" }}>First Name</th>
                             <th style={{ textAlign: "center" }}>Last Name</th>
+                            <th style={{ textAlign: "center" }}>Batch</th>
                             <th style={{ textAlign: "center" }}>Course ID</th>
-                            <th style={{ textAlign: "center" }}>Course Name</th>
                             <th style={{ textAlign: "center" }}>Action</th>
                         </tr>
                     </thead>
@@ -87,11 +87,11 @@ export const Page = () => {
                             return (
                                 <tr key={item.id}>
                                     <th scope="row">{index + 1} </th>
-                                    <td>{item.s_id} </td>
-                                    <td>{item.s_fname} </td>
-                                    <td>{item.s_lname} </td>
-                                    <td>{item.c_id} </td>
-                                    <td>{item.c_name} </td>
+                                    <td>{item.s_Id} </td>
+                                    <td>{item.s_Fname} </td>
+                                    <td>{item.s_Lname} </td>
+                                    <td>{item.s_Batch} </td>
+                                    <td>{item.c_Id} </td>
                                     <td>
                                         <Link to={`/update/${item.id}`}>
                                             <button>Edit</button>

@@ -23,12 +23,12 @@ app.get("/api/get", (req, res) => {
 });
 
 app.post("/api/post", (req, res) => {
-    const { s_id, s_fname, s_lname, c_id, c_name } = req.body;
+    const { s_Id, s_Fname, s_Lname, s_Batch, c_Id } = req.body;
     const sqlInsert =
-        "Insert Into mark_visualizer.students (s_id, s_fname, s_lname, c_id, c_name) values(?, ?, ?, ?, ?)";
+        "Insert Into mark_visualizer.students (s_Id, s_Fname, s_Lname, s_Batch, c_Id) values(?, ?, ?, ?, ?)";
     db.query(
         sqlInsert,
-        [s_id, s_fname, s_lname, c_id, c_name],
+        [s_Id, s_Fname, s_Lname, s_Batch, c_Id],
         (error, result) => {
             if (error) {
                 console.log(error);
@@ -60,12 +60,12 @@ app.get("/api/get/:id", (req, res) => {
 
 app.put("/api/update/:id", (req, res) => {
     const { id } = req.params;
-    const { s_id, s_fname, s_lname, c_id, c_name } = req.body;
+    const { s_Id, s_Fname, s_Lname, s_Batch, c_Id } = req.body;
     const sqlUpdate =
-        "UPDATE mark_visualizer.students SET s_id=?, s_fname=?, s_lname=?, c_id=?, c_name=? WHERE id=?";
+        "UPDATE mark_visualizer.students SET s_Id=?, s_Fname=?, s_Lname=?, s_Batch, c_Id=? WHERE id=?";
     db.query(
         sqlUpdate,
-        [s_id, s_fname, s_lname, c_id, c_name, id],
+        [s_Id, s_Fname, s_Lname, s_Batch, c_Id, id],
         (error, result) => {
             if (error) {
                 console.log(error);
@@ -77,7 +77,7 @@ app.put("/api/update/:id", (req, res) => {
 
 app.get("/", (req, res) => {
     // const sqlInsert =
-    //     "Insert Into students (id, s_fname, s_lname, c_id, c_name) values('NP04CP4A190087', 'Swastika', 'Chhetri', 'CS50', 'BIT')";
+    //     "Insert Into students (id, s_Fname, s_Lname, c_Id, c_name) values('NP04CP4A190087', 'Swastika', 'Chhetri', 'CS50', 'BIT')";
     // db.query(sqlInsert, (error, result) => {
     //     console.log("error", error);
     //     console.log("result", result);

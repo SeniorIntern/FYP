@@ -9,15 +9,15 @@ const initialState = {
     s_id: "",
     s_fname: "",
     s_lname: "",
+    s_batch: "",
     c_id: "",
-    c_name: "",
 };
 
 export const AddEdit = () => {
     const [state, setState] = useState(initialState);
 
     // destructuring from state
-    const { s_id, s_fname, s_lname, c_id, c_name } = state;
+    const { s_id, s_fname, s_lname, s_batch, c_id } = state;
 
     const history = useHistory();
 
@@ -35,7 +35,7 @@ export const AddEdit = () => {
     const handleSubmit = (e) => {
         // prevent default behaviour of browser
         e.preventDefault();
-        if (!s_id || !s_fname || !s_lname || !c_id || !c_name) {
+        if (!s_id || !s_fname || !s_lname || !s_batch || !c_id) {
             // toast.error("Please provide values");
             alert("Please provide values");
         } else {
@@ -46,8 +46,8 @@ export const AddEdit = () => {
                         s_id,
                         s_fname,
                         s_lname,
+                        s_batch,
                         c_id,
-                        c_name,
                     })
                     // clear input fields after use submits the value
                     .then(() => {
@@ -55,8 +55,8 @@ export const AddEdit = () => {
                             s_id: "",
                             s_fname: "",
                             s_lname: "",
+                            s_batch: "",
                             c_id: "",
-                            c_name: "",
                         });
                     })
                     // .catch((err) => toast.error(err.response.data));
@@ -69,8 +69,8 @@ export const AddEdit = () => {
                         s_id,
                         s_fname,
                         s_lname,
+                        s_batch,
                         c_id,
-                        c_name,
                     })
                     // clear input fields after use submits the value
                     .then(() => {
@@ -78,8 +78,8 @@ export const AddEdit = () => {
                             s_id: "",
                             s_fname: "",
                             s_lname: "",
+                            s_batch: "",
                             c_id: "",
-                            c_name: "",
                         });
                     })
                     // .catch((err) => toast.error(err.response.data));
@@ -149,6 +149,15 @@ export const AddEdit = () => {
                         value={s_lname || ""}
                         onChange={handleInputChange}
                     />
+                    <label htmlFor="s_batch">Batch</label>
+                    <input
+                        type="text"
+                        name="s_batch"
+                        id="s_batch"
+                        placeholder="Your student batch..."
+                        value={s_batch || ""}
+                        onChange={handleInputChange}
+                    />
                     <label htmlFor="c_id">Course ID</label>
                     <input
                         type="text"
@@ -156,15 +165,6 @@ export const AddEdit = () => {
                         id="c_id"
                         placeholder="Your Course ID..."
                         value={c_id || ""}
-                        onChange={handleInputChange}
-                    />
-                    <label htmlFor="c_name">Course Name</label>
-                    <input
-                        type="text"
-                        name="c_name"
-                        id="c_name"
-                        placeholder="Your Course Name..."
-                        value={c_name || ""}
                         onChange={handleInputChange}
                     />
                     <input type="submit" value={id ? "Update" : "save"} />

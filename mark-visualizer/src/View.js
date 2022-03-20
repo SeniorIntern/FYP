@@ -26,23 +26,23 @@ export const View = () => {
                     <br />
                     <br />
                     <strong>Student ID:</strong>
-                    <span>{user.s_id}</span>
+                    <span>{user.s_Id}</span>
                     <br />
                     <br />
                     <strong>Student First Name:</strong>
-                    <span>{user.s_fname}</span>
+                    <span>{user.s_Fname}</span>
                     <br />
                     <br />
                     <strong>Student Last Name:</strong>
-                    <span>{user.s_fname}</span>
+                    <span>{user.s_Lname}</span>
+                    <br />
+                    <br />
+                    <strong>Batch:</strong>
+                    <span>{user.s_Batch}</span>
                     <br />
                     <br />
                     <strong>Course ID:</strong>
-                    <span>{user.c_id}</span>
-                    <br />
-                    <br />
-                    <strong>Course Name:</strong>
-                    <span>{user.c_name}</span>
+                    <span>{user.c_Id}</span>
                     <br />
                     <br />
                     <Link to="/page">
