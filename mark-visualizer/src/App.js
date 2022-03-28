@@ -7,37 +7,27 @@ import Page from "./Page";
 import Profile from "./Profile";
 import Register from "./Register";
 import Sidebar from "./Sidebar";
-import StudentAdd from "./StudentAdd";
-import Table from "./Table";
 import { Programmes } from "./Programmes";
+import Analytics from "./Analytics";
+import Results from "./Results";
 
 function App() {
     return (
         <Router>
             <div className="App">
                 <Switch>
-                    <Route path="/register">
+                    <Route path="/Register">
                         <Register />
                     </Route>
 
-                    <Route path="/login">
+                    <Route path="/Login">
                         <Login />
                     </Route>
 
-                    <Route path="/profile">
+                    {/* <Route path="/Profile">
                         <Header />
                         <Profile />
-                    </Route>
-
-                    <Route path="/studentadd">
-                        <Header />
-                        <StudentAdd />
-                        <Sidebar />
-                    </Route>
-
-                    <Route path="/table">
-                        <Table />
-                    </Route>
+                    </Route> */}
 
                     <Route path="/Page">
                         <Header />
@@ -47,6 +37,16 @@ function App() {
                     <Route path="/Programmes">
                         <Header />
                         <Programmes />
+                    </Route>
+
+                    <Route path="/Results">
+                        <Header />
+                        <Results />
+                    </Route>
+
+                    <Route path="/Analytics">
+                        <Header />
+                        <Analytics />
                     </Route>
 
                     <Route path="/addContact">

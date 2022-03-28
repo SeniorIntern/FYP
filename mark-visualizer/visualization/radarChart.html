@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>ChartJS</title>
+
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                font-family: jetbrains-mono;
+            }
+
+            .chartMenu {
+                width: 100vw;
+                color: rgb(4, 197, 204);
+                text-align: center;
+            }
+
+            .chartMenu p {
+                font-size: 20px;
+                text-align: center;
+                color: black;
+            }
+
+            .chartCard {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .chartBox {
+                width: 40vw;
+                padding: 10px;
+                border-radius: 20px;
+                border: 3px solid rgb(3, 16, 20);
+                background: white;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="chartMenu">
+            <p>Individual Studnet' Analytics</p>
+        </div>
+        <div class="chartCard">
+            <div class="chartBox">
+                <canvas id="myChart"></canvas>
+            </div>
+        </div>
+        <!-- include Chart.js in page -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+        <script>
+            // AJAX SETUP
+            const xmlhttp = new XMLHttpRequest();
+            // const url = "http://127.0.0.1:5500/students.json";
+            let x = 19031002;
+            const url = "http://localhost:5006/api/get/";
+
+            xmlhttp.open("GET", url, true);
+            xmlhttp.send();
+
+            // state 4 is for complete state, and ErrorStatus at 200 or 400 as u like
+            xmlhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    const datapoints = JSON.parse(this.responseText);
+                    console.log(datapoints);
+
+                    // module code: labels
+                    const labelmCode = datapoints.map(function (index) {
+                        return index.m_Code;
+                    });
+
+                    // section performance-c1: Data
+                    const scoreY1C1 = datapoints.map(function (index) {
+                        return index.Y1C1;
+                    });
+
+                    // section performance-c2: Data
+                    const scoreY1C2 = datapoints.map(function (index) {
+                        return index.Y1C2;
+                    });
+                    
+                    // section performance-c2: Data
+                    const scoreY1C3 = datapoints.map(function (index) {
+                        return index.Y1C3;
+                    });
+                    
+                    // section performance-c2: Data
+                    const scoreY1C4 = datapoints.map(function (index) {
+                        return index.Y1C4;
+                    });
+
+                    // setup for bar chart
+                    const labels = labelmCode;
+
+                    const data = {
+                        labels: labelmCode,
+                        datasets: [
+                            {
+                                label: "Year-1 Section-C1",
+                                data: scoreY1C1,
+                                fill: true,
+                                backgroundColor: "rgba(255, 99, 132, 0.2)",
+                                borderColor: "rgb(255, 99, 132)",
+                                pointBackgroundColor: "rgb(255, 99, 132)",
+                                pointBorderColor: "#fff",
+                                pointHoverBackgroundColor: "#fff",
+                                pointHoverBorderColor: "rgb(255, 99, 132)",
+                            },
+
+                            {
+                                label: "Year-1 Section-C2",
+                                data: scoreY1C2,
+                                fill: true,
+                                backgroundColor: "rgba(54, 162, 235, 0.2)",
+                                borderColor: "rgb(54, 162, 235)",
+                                pointBackgroundColor: "rgb(54, 162, 235)",
+                                pointBorderColor: "#fff",
+                                pointHoverBackgroundColor: "#fff",
+                                pointHoverBorderColor: "rgb(54, 162, 235)",
+                            },
+                            {
+                                label: "Year-1 Section-C3",
+                                data: scoreY1C3,
+                                fill: true,
+                                backgroundColor: "rgba(76, 255, 0, 0.2)",
+                                borderColor: "rgb(76, 255, 0)",
+                                pointBackgroundColor: "rgb(76, 255, 0)",
+                                pointBorderColor: "#fff",
+                                pointHoverBackgroundColor: "#fff",
+                                pointHoverBorderColor: "rgb(76, 255, 0)",
+                            },
+                            {
+                                label: "Year-1 Section-C4",
+                                data: scoreY1C4,
+                                fill: true,
+                                backgroundColor: "rgba(148, 0, 255, 0.2)",
+                                borderColor: "rgb(148, 0, 255)",
+                                pointBackgroundColor: "rgb(148, 0, 255)",
+                                pointBorderColor: "#fff",
+                                pointHoverBackgroundColor: "#fff",
+                                pointHoverBorderColor: "rgb(148, 0, 255)",
+                            },
+                        ],
+                    };
+
+                    // config for radar chart
+                    const config = {
+                        type: "radar",
+                        data: data,
+                        options: {
+                            elements: {
+                                line: {
+                                    borderWidth: 3,
+                                },
+                            },
+                        },
+                    };
+
+                    // render the chart
+                    const myChart = new Chart(
+                        document.getElementById("myChart"),
+                        config
+                    );
+                }
+            };
+        </script>
+    </body>
+</html>

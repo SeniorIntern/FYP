@@ -10,7 +10,7 @@ export const Page = () => {
     const [data, setData] = useState([]);
 
     const loadData = async () => {
-        const response = await axios.get("http://localhost:5000/api/get");
+        const response = await axios.get("http://localhost:5002/api/get");
         setData(response.data);
     };
 
@@ -20,7 +20,7 @@ export const Page = () => {
 
     const deleteContact = (id) => {
         if (window.confirm("Are you sure you want to delete?")) {
-            axios.delete(`http://localhost:5000/api/remove/${id}`);
+            axios.delete(`http://localhost:5002/api/remove/${id}`);
             // toast.success("Contact deleted sucessfully");
             alert("Sucessfully Deleted");
             setTimeout(() => loadData(), 500);
@@ -34,6 +34,7 @@ export const Page = () => {
 
     return (
         <div className="student__page">
+            {/* Side-Navbar */}
             <div className="sidebar">
                 <div className="sidebar__content">
                     <Link to="/Page" style={text__style}>
@@ -42,19 +43,19 @@ export const Page = () => {
                     <Link to="/Programmes" style={text__style}>
                         <div className="navbar__options">Programmes</div>
                     </Link>
-                    <Link to="/Page" style={text__style}>
-                        <div className="navbar__options">Leaderboard</div>
+                    <Link to="/Results" style={text__style}>
+                        <div className="navbar__options">Results</div>
                     </Link>
-                    <Link to="/Page" style={text__style}>
+                    <Link to="/Analytics" style={text__style}>
                         <div className="navbar__options">Analytics</div>
                     </Link>
-                    <Link to="/Page" style={text__style}>
+                    <Link to="/Setting" style={text__style}>
                         <div className="navbar__options">Setting</div>
                     </Link>
                 </div>
             </div>
 
-            <div className="page-container">
+            <div className="page__container">
                 <div className="table__options">
                     <input
                         type="text"
@@ -82,6 +83,7 @@ export const Page = () => {
                             <th style={{ textAlign: "center" }}>Action</th>
                         </tr>
                     </thead>
+
                     <tbody>
                         {data.map((item, index) => {
                             return (

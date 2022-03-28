@@ -10,7 +10,7 @@ export const View = () => {
     // run only after getting id
     useEffect(() => {
         axios
-            .get(`http://localhost:5000/api/get/${id}`)
+            .get(`http://localhost:5002/api/get/${id}`)
             .then((resp) => setUser({ ...resp.data[0] }));
     }, [id]);
 

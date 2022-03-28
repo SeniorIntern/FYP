@@ -1,16 +1,14 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { toast, Toast } from "react-toastify";
-// import { Toast } from "react-toastify/dist/components";
 import axios from "axios";
-import "./Page.css";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import "./Results.css";
 import "./Sidebar.css";
 
-export const Programmes = () => {
+export const Results = () => {
     const [data, setData] = useState([]);
 
     const loadData = async () => {
-        const response = await axios.get("http://localhost:5003/api/get");
+        const response = await axios.get("http://localhost:5004/api/get");
         setData(response.data);
     };
 
@@ -20,7 +18,7 @@ export const Programmes = () => {
 
     const deleteContact = (id) => {
         if (window.confirm("Are you sure you want to delete?")) {
-            axios.delete(`http://localhost:5003/api/remove/${id}`);
+            axios.delete(`http://localhost:5004/api/remove/${id}`);
             // toast.success("Contact deleted sucessfully");
             alert("Sucessfully Deleted");
             setTimeout(() => loadData(), 500);
@@ -33,7 +31,7 @@ export const Programmes = () => {
     };
 
     return (
-        <div className="student__page">
+        <div className="result">
             <div className="sidebar">
                 <div className="sidebar__content">
                     <Link to="/Page" style={text__style}>
@@ -48,22 +46,25 @@ export const Programmes = () => {
                     <Link to="/Analytics" style={text__style}>
                         <div className="navbar__options">Analytics</div>
                     </Link>
-                    <Link to="/Setting" style={text__style}>
+                    <Link to="/Page" style={text__style}>
                         <div className="navbar__options">Setting</div>
                     </Link>
                 </div>
             </div>
 
-            <div className="page-container">
+            <div className="result__container">
+                <h3 style={{ textAlign: "center" }}>
+                    Students' Module Results
+                </h3>
+
                 <table className="styled-table">
                     <thead>
                         <tr>
-                            <th style={{ textAlign: "center" }}>S.NO</th>
-                            <th style={{ textAlign: "center" }}>Course ID</th>
-                            <th style={{ textAlign: "center" }}>Course Name</th>
-                            <th style={{ textAlign: "center" }}>Module ID</th>
-                            <th style={{ textAlign: "center" }}>Module Name</th>
-                            <th style={{ textAlign: "center" }}>Action</th>
+                            <th style={{ textAlign: "center" }}>Student ID</th>
+                            <th style={{ textAlign: "center" }}>CC12</th>
+                            <th style={{ textAlign: "center" }}>CC49</th>
+                            <th style={{ textAlign: "center" }}>TG406</th>
+                            <th style={{ textAlign: "center" }}>SG12</th>
                         </tr>
                     </thead>
 
@@ -72,26 +73,10 @@ export const Programmes = () => {
                             return (
                                 <tr key={item.id}>
                                     <th scope="row">{index + 1} </th>
-                                    <td>{item.c_Id} </td>
-                                    <td>{item.c_Name} </td>
+                                    <td>{item.s_Id} </td>
                                     <td>{item.m_Code} </td>
-                                    <td>{item.m_Name} </td>
-                                    <td>
-                                        <Link to={`/update/${item.id}`}>
-                                            <button className="btn btn-edit">
-                                                Edit
-                                            </button>
-                                        </Link>
-
-                                        <button
-                                            className="btn btn-delete"
-                                            onClick={() =>
-                                                deleteContact(item.id)
-                                            }
-                                        >
-                                            Delete
-                                        </button>
-                                    </td>
+                                    <td>{item.m_Grade} </td>
+                                    {/* <td>{item.ResultDate} </td> */}
                                 </tr>
                             );
                         })}
@@ -102,4 +87,4 @@ export const Programmes = () => {
     );
 };
 
-export default Programmes;
+export default Results;

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>ChartJS</title>
+
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                font-family: jetbrains-mono;
+            }
+
+            .chartMenu {
+                width: 100vw;
+                color: rgb(4, 197, 204);
+                text-align: center;
+            }
+
+            .chartMenu p {
+                font-size: 20px;
+                text-align: center;
+                color: black;
+            }
+
+            .chartCard {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .chartBox {
+                width: 40vw;
+                padding: 10px;
+                border-radius: 20px;
+                border: 3px solid rgb(3, 16, 20);
+                background: white;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="chartMenu">
+            <p>Studnet' Module Performance Analytics</p>
+        </div>
+        <div class="chartCard">
+            <div class="chartBox">
+                <canvas id="myChart"></canvas>
+            </div>
+        </div>
+        <!-- include Chart.js in page -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+        <script>
+            // AJAX SETUP
+            const xmlhttp = new XMLHttpRequest();
+            // const url = "http://127.0.0.1:5500/students.json";
+            const url = "http://localhost:5005/api/get/";
+
+            xmlhttp.open("GET", url, true);
+            xmlhttp.send();
+
+            // state 4 is for complete state, and ErrorStatus at 200 or 400 as u like
+            xmlhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    const datapoints = JSON.parse(this.responseText);
+                    console.log(datapoints);
+
+                    // Dataset 1
+                    const Avggrade = datapoints.map(function (index) {
+                        return index.Average;
+                    });
+
+                    // Dataset 2
+                    const CC12grade = datapoints.map(function (index) {
+                        return index.CC12;
+                    });
+
+                    // Dataset
+                    const CC49grade = datapoints.map(function (index) {
+                        return index.CC49;
+                    });
+
+                    // Dataset
+                    const TG406grade = datapoints.map(function (index) {
+                        return index.TG406;
+                    });
+
+                    // Dataset
+                    const SG12grade = datapoints.map(function (index) {
+                        return index.SG12;
+                    });
+
+                    // for student id
+                    const labelsid = datapoints.map(function (index) {
+                        return index.s_Id;
+                    });
+                    console.log(labelsid);
+
+                    // setup for bar chart
+                    const labels = labelsid;
+
+                    const data = {
+                        labels: labels,
+                        datasets: [
+                            {
+                                label: "Overall Average",
+                                backgroundColor: "rgb(255, 0, 0)",
+                                borderColor: "rgb(255, 0, 0)",
+                                data: Avggrade,
+                            },
+                            {
+                                label: "CC12",
+                                backgroundColor: "rgb(36, 64, 92)",
+                                borderColor: "rgb(36, 64, 92)",
+                                data: CC12grade,
+                            },
+                            {
+                                label: "CC49",
+                                backgroundColor: "rgb(255, 255, 0)",
+                                borderColor: "rgb(255, 255, 0)",
+                                data: CC49grade,
+                            },
+                            {
+                                label: "TG406",
+                                backgroundColor: "rgb(76, 255, 0)",
+                                borderColor: "rgb(76, 255, 0)",
+                                data: TG406grade,
+                            },
+                            {
+                                label: "SG12",
+                                backgroundColor: "rgb(148, 0, 255)",
+                                borderColor: "rgb(148, 0, 255)",
+                                data: SG12grade,
+                            },
+                        ],
+                    };
+
+                    // config for bar chart
+                    const config = {
+                        type: "line",
+                        data: data,
+                        options: {},
+                    };
+
+                    // render the chart
+                    const myChart = new Chart(
+                        document.getElementById("myChart"),
+                        config
+                    );
+                }
+            };
+        </script>
+    </body>
+</html>

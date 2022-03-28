@@ -29,7 +29,7 @@ function Login() {
                 // alert("Wrong username/password combination");
                 setLoginStatus(response.data.message);
             } else {
-                history.push("/page");
+                history.push("/Page");
                 // added later
                 // setLoginStatus(response.data[0].username);
             }
