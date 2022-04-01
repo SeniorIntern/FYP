@@ -1,0 +1,42 @@
+[
+    {
+        "id": 1,
+        "s_Id": 19031007,
+        "s_Fname": "Nikhil",
+        "s_Lname": "Thapa",
+        "s_Batch": 2019,
+        "c_Id": "CS50"
+    },
+    {
+        "id": 2,
+        "s_Id": 19031008,
+        "s_Fname": "Bipin",
+        "s_Lname": "Chhetri",
+        "s_Batch": 2019,
+        "c_Id": "CS50"
+    },
+    {
+        "id": 3,
+        "s_Id": 19031009,
+        "s_Fname": "Nirmal",
+        "s_Lname": "Khawas",
+        "s_Batch": 2019,
+        "c_Id": "CS50"
+    },
+    {
+        "id": 4,
+        "s_Id": 19031010,
+        "s_Fname": "Ram",
+        "s_Lname": "Krishna",
+        "s_Batch": 2019,
+        "c_Id": "MS32"
+    },
+    {
+        "id": 5,
+        "s_Id": 19031002,
+        "s_Fname": "Sunil",
+        "s_Lname": "Thapa",
+        "s_Batch": 2019,
+        "c_Id": "CS50"
+    }
+]

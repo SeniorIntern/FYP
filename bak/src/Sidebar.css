@@ -1,0 +1,22 @@
+.sidebar {
+    border: 2px solid black;
+    background-color: #24405c;
+    color: white;
+    font-size: large;
+    max-width: 3.4cm;
+    margin: 30px;
+    margin-top: 0;
+}
+
+.sidebar__content {
+    display: flex;
+    flex-direction: column;
+    color: white;
+}
+
+.navbar__options {
+    margin: 10px;
+    margin-bottom: 52px;
+    color: inherit;
+    text-decoration: none;
+}
