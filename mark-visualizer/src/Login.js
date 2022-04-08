@@ -39,31 +39,44 @@ function Login() {
     return (
         <div className="login">
             <div className="loginContainer">
-                <img src={logo} alt="" className="web__logo" />
-                <input
-                    type="text"
-                    placeholder="Enter Username"
-                    onChange={(e) => {
-                        setUsername(e.target.value);
-                    }}
-                />
-                <input
-                    type="password"
-                    placeholder="Enter Password"
-                    onChange={(e) => {
-                        setPassword(e.target.value);
-                    }}
-                />
-                <button onClick={login} className="login__signInButton">
-                    Login
-                </button>
-                <h1>{loginStatus}</h1>
-                <p style={{ margin: "auto" }}>New User?</p>
-                <Link to="./Register">
-                    <button className="login__registerButton">
-                        CREATE your Account
+                <div className="left__content">
+                    <img src={logo} alt="Facebook" />
+                    <h2 class=".introText">
+                        Analyze and visualize your exam' marks to <br /> better
+                        prepare exams
+                    </h2>
+                </div>
+
+                {/* login form here */}
+                <div className="right__content">
+                    <img src={logo} alt="" className="web__logo" />
+                    <input
+                        type="text"
+                        placeholder="Enter Username"
+                        onChange={(e) => {
+                            setUsername(e.target.value);
+                        }}
+                    />
+                    <input
+                        type="password"
+                        placeholder="Enter Password"
+                        onChange={(e) => {
+                            setPassword(e.target.value);
+                        }}
+                    />
+                    <button onClick={login} className="login__signInButton">
+                        Login
                     </button>
-                </Link>
+                    <hr />
+
+                    <h1>{loginStatus}</h1>
+                    <p style={{ margin: "auto" }}>New User?</p>
+                    <Link to="./Register">
+                        <button className="login__registerButton">
+                            CREATE your Account
+                        </button>
+                    </Link>
+                </div>
             </div>
         </div>
     );

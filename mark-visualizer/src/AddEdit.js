@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useHistory, useParams, Link } from "react-router-dom";
 import axios from "axios";
-import { toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./AddEdit.css";
 import "./Sidebar.css";
 
@@ -36,8 +37,8 @@ export const AddEdit = () => {
         // prevent default behaviour of browser
         e.preventDefault();
         if (!s_id || !s_fname || !s_lname || !s_batch || !c_id) {
-            // toast.error("Please provide values");
-            alert("Please provide values");
+            // alert("Please provide values");
+            toast.error("Please provide values");
         } else {
             // if id exists then update else post
             if (!id) {
@@ -100,6 +101,8 @@ export const AddEdit = () => {
 
     return (
         <div className="newStudent__Profile">
+            <ToastContainer theme="dark" />
+
             <div className="sidebar">
                 <div className="sidebar__content">
                     <Link to="/Page">

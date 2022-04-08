@@ -37,6 +37,7 @@ app.post("/api/post", (req, res) => {
     );
 });
 
+/*
 app.delete("/api/remove/:id", (req, res) => {
     const { id } = req.params;
     const sqlRemove = "DELETE FROM mark_visualizer.students WHERE id = ?";
@@ -47,6 +48,7 @@ app.delete("/api/remove/:id", (req, res) => {
     });
 });
 
+// for view btn
 app.get("/api/get/:id", (req, res) => {
     const { id } = req.params;
     const sqlGet = "SELECT * FROM mark_visualizer.students WHERE id=?";
@@ -74,15 +76,83 @@ app.put("/api/update/:id", (req, res) => {
         }
     );
 });
+*/
 
-app.get("/", (req, res) => {
-    // const sqlInsert =
-    //     "Insert Into students (id, s_Fname, s_Lname, c_Id, c_name) values('NP04CP4A190087', 'Swastika', 'Chhetri', 'CS50', 'BIT')";
-    // db.query(sqlInsert, (error, result) => {
-    //     console.log("error", error);
-    //     console.log("result", result);
-    //     res.send("Hello dev");
-    // });
+app.get("/programmes/get", (req, res) => {
+    const sqlGet = "SELECT * FROM mark_visualizer.programmes";
+    db.query(sqlGet, (error, result) => {
+        res.send(result);
+    });
+});
+
+app.post("/programmes/post", (req, res) => {
+    const { c_id, c_name, m_id, m_name } = req.body;
+    const sqlInsert =
+        "Insert Into mark_visualizer.programmes (c_id, c_name, m_id, m_name) values(?, ?, ?, ?)";
+    db.query(sqlInsert, [c_id, c_name, m_id, m_name], (error, result) => {
+        if (error) {
+            console.log(error);
+        }
+    });
+});
+
+app.delete("/programmes/remove/:id", (req, res) => {
+    const { id } = req.params;
+    const sqlRemove = "DELETE FROM mark_visualizer.programmes WHERE id = ?";
+    db.query(sqlRemove, id, (error, result) => {
+        if (error) {
+            console.log(error);
+        }
+    });
+});
+
+app.get("/programmes/get/:id", (req, res) => {
+    const { id } = req.params;
+    const sqlGet = "SELECT * FROM mark_visualizer.programmes WHERE id=?";
+    db.query(sqlGet, id, (error, result) => {
+        if (error) {
+            console.log(error);
+        }
+        res.send(result);
+    });
+});
+
+app.put("/programmes/update/:id", (req, res) => {
+    const { id } = req.params;
+    const { c_id, c_name, m_id, m_name } = req.body;
+    const sqlUpdate =
+        "UPDATE mark_visualizer.programmes SET c_id=?, c_name=?,m_id=?, m_name=? WHERE id=?";
+    db.query(sqlUpdate, [c_id, c_name, m_id, m_name, id], (error, result) => {
+        if (error) {
+            console.log(error);
+        }
+        res.send(result);
+    });
+});
+
+// setup for student-module-result
+app.get("/smr/get", (req, res) => {
+    const sqlGet = "SELECT * FROM mark_visualizer.student_moduleresult;";
+    db.query(sqlGet, (error, result) => {
+        res.send(result);
+    });
+});
+
+app.put("/smr/update/:id", (req, res) => {
+    const { id } = req.params;
+    const { s_Id, CC12, CC49, TG406, SG12, Average } = req.body;
+    const sqlUpdate =
+        "UPDATE mark_visualizer.student_moduleresult SET s_Id=?, CC12=?,CC49=?, TG406=?, SG12=?, Average=? WHERE id=?";
+    db.query(
+        sqlUpdate,
+        [s_Id, CC12, CC49, TG406, SG12, Average, id],
+        (error, result) => {
+            if (error) {
+                console.log(error);
+            }
+            res.send(result);
+        }
+    );
 });
 
 app.listen(5002, () => {

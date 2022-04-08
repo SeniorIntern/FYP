@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { toast, Toast } from "react-toastify";
-// import { Toast } from "react-toastify/dist/components";
 import axios from "axios";
 import "./Page.css";
 import "./Sidebar.css";
@@ -21,7 +19,6 @@ export const Page = () => {
     const deleteContact = (id) => {
         if (window.confirm("Are you sure you want to delete?")) {
             axios.delete(`http://localhost:5002/api/remove/${id}`);
-            // toast.success("Contact deleted sucessfully");
             alert("Sucessfully Deleted");
             setTimeout(() => loadData(), 500);
         }
@@ -80,7 +77,6 @@ export const Page = () => {
                             <th style={{ textAlign: "center" }}>Last Name</th>
                             <th style={{ textAlign: "center" }}>Batch</th>
                             <th style={{ textAlign: "center" }}>Course ID</th>
-                            <th style={{ textAlign: "center" }}>Action</th>
                         </tr>
                     </thead>
 
@@ -94,6 +90,7 @@ export const Page = () => {
                                     <td>{item.s_Lname} </td>
                                     <td>{item.s_Batch} </td>
                                     <td>{item.c_Id} </td>
+                                    {/* 
                                     <td>
                                         <Link to={`/update/${item.id}`}>
                                             <button>Edit</button>
@@ -111,6 +108,7 @@ export const Page = () => {
                                             <button>View</button>
                                         </Link>
                                     </td>
+                                    */}
                                 </tr>
                             );
                         })}

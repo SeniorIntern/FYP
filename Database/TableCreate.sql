@@ -31,6 +31,9 @@ INSERT INTO Module VALUES('CC12', 'Data Structure and Algorithm', '30');
 INSERT INTO Module VALUES('CC12', 'Data Structure and Algorithm', '30');
 INSERT INTO Module VALUES('CC12', 'Data Structure and Algorithm', '30');
 
+CREATE TABLE `student_moduleresult` (`s_Id` int NOT NULL,`CC12` int DEFAULT NULL,`CC49` int DEFAULT NULL,`TG406` int DEFAULT NULL,`SG12` int DEFAULT NULL,`Average` int DEFAULT NULL,
+FOREIGN KEY (`s_Id`) REFERENCES `students` (`s_Id`)
+) 
 
 -- for user authentication
 user(u_Id, userName, password)

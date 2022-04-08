@@ -8,7 +8,7 @@ export const Results = () => {
     const [data, setData] = useState([]);
 
     const loadData = async () => {
-        const response = await axios.get("http://localhost:5004/api/get");
+        const response = await axios.get("http://localhost:5002/smr/get");
         setData(response.data);
     };
 
@@ -18,7 +18,7 @@ export const Results = () => {
 
     const deleteContact = (id) => {
         if (window.confirm("Are you sure you want to delete?")) {
-            axios.delete(`http://localhost:5004/api/remove/${id}`);
+            axios.delete(`http://localhost:5002/smr/remove/${id}`);
             // toast.success("Contact deleted sucessfully");
             alert("Sucessfully Deleted");
             setTimeout(() => loadData(), 500);
@@ -60,11 +60,14 @@ export const Results = () => {
                 <table className="styled-table">
                     <thead>
                         <tr>
+                            <th style={{ textAlign: "center" }}>S.NO</th>
                             <th style={{ textAlign: "center" }}>Student ID</th>
                             <th style={{ textAlign: "center" }}>CC12</th>
                             <th style={{ textAlign: "center" }}>CC49</th>
                             <th style={{ textAlign: "center" }}>TG406</th>
                             <th style={{ textAlign: "center" }}>SG12</th>
+                            <th style={{ textAlign: "center" }}>Average</th>
+                            <th style={{ textAlign: "center" }}>Action</th>
                         </tr>
                     </thead>
 
@@ -74,9 +77,29 @@ export const Results = () => {
                                 <tr key={item.id}>
                                     <th scope="row">{index + 1} </th>
                                     <td>{item.s_Id} </td>
-                                    <td>{item.m_Code} </td>
-                                    <td>{item.m_Grade} </td>
-                                    {/* <td>{item.ResultDate} </td> */}
+                                    <td>{item.CC12} </td>
+                                    <td>{item.CC49} </td>
+                                    <td>{item.TG406} </td>
+                                    <td>{item.SG12} </td>
+                                    <td>{item.Average} </td>
+
+                                    <td>
+                                        <Link to={`/update/${item.id}`}>
+                                            <button>Edit</button>
+                                        </Link>
+
+                                        <button
+                                            onClick={() =>
+                                                deleteContact(item.id)
+                                            }
+                                        >
+                                            Delete
+                                        </button>
+
+                                        <Link to={`/view/${item.id}`}>
+                                            <button>View</button>
+                                        </Link>
+                                    </td>
                                 </tr>
                             );
                         })}

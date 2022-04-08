@@ -57,7 +57,7 @@
             const xmlhttp = new XMLHttpRequest();
             // const url = "http://127.0.0.1:5500/students.json";
             let x = 19031002;
-            const url = "http://localhost:5006/api/get/";
+            const url = "http://localhost:5005/sectionAverage/get/";
 
             xmlhttp.open("GET", url, true);
             xmlhttp.send();
@@ -82,12 +82,12 @@
                     const scoreY1C2 = datapoints.map(function (index) {
                         return index.Y1C2;
                     });
-                    
+
                     // section performance-c2: Data
                     const scoreY1C3 = datapoints.map(function (index) {
                         return index.Y1C3;
                     });
-                    
+
                     // section performance-c2: Data
                     const scoreY1C4 = datapoints.map(function (index) {
                         return index.Y1C4;

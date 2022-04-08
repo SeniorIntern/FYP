@@ -34,6 +34,25 @@ app.get("/api/get/:s_Id", (req, res) => {
     });
 });
 
+app.get("/sectionAverage/get", (req, res) => {
+    const sqlGet = "SELECT * FROM mark_visualizer.sectionaverage";
+    db.query(sqlGet, (error, result) => {
+        res.send(result);
+    });
+});
+
+app.get("/sectionAverage/get/:m_Code", (req, res) => {
+    const { m_Code } = req.params;
+    const sqlGet =
+        "SELECT * FROM mark_visualizer.sectionaverage WHERE m_Code=?";
+    db.query(sqlGet, m_Code, (error, result) => {
+        if (error) {
+            console.log(error);
+        }
+        res.send(result);
+    });
+});
+
 app.listen(5005, () => {
     console.log("student_moduleresult server running on port 5005");
 });

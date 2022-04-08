@@ -1,5 +1,4 @@
 .login {
-    background-color: white;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -7,14 +6,34 @@
 }
 
 .loginContainer {
+    display: flex;
+    flex-direction: row;
+    margin-top: 6%;
+}
+
+.introText {
+    width: 50px;
+}
+
+.left__content {
+    margin: auto;
+    padding: 80px;
+}
+
+hr {
+    color: black;
+    width: 100%;
+}
+
+.right__content {
     width: 300px;
     height: fit-content;
     display: flex;
     flex-direction: column;
     border-radius: 1rem;
-    border: 2px solid black;
+    box-shadow: 0 0 20px rgb(207, 207, 207);
     padding: 20px;
-    margin-top: 6%;
+    background-color: #ffffff;
 }
 
 .web__logo {
@@ -31,6 +50,9 @@ input {
     margin-bottom: 10px;
     background-color: white;
     width: 98%;
+    /* added later */
+    /* border: none;
+    outline: none; */
 }
 
 .login__signInButton {

@@ -10,7 +10,9 @@ export const Programmes = () => {
     const [data, setData] = useState([]);
 
     const loadData = async () => {
-        const response = await axios.get("http://localhost:5003/api/get");
+        const response = await axios.get(
+            "http://localhost:5002/programmes/get"
+        );
         setData(response.data);
     };
 
@@ -20,7 +22,7 @@ export const Programmes = () => {
 
     const deleteContact = (id) => {
         if (window.confirm("Are you sure you want to delete?")) {
-            axios.delete(`http://localhost:5003/api/remove/${id}`);
+            axios.delete(`http://localhost:5002/programmes/remove/${id}`);
             // toast.success("Contact deleted sucessfully");
             alert("Sucessfully Deleted");
             setTimeout(() => loadData(), 500);

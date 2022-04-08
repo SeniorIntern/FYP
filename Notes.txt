@@ -1,3 +1,6 @@
+grey bg(fb login): #F0F2F5
+blue: #166FE5	
+
 blue: #668cff	rgb(102, 140, 255)	hsl(225, 100%, 70%)	
 Content section:	#668cff @ 60%
 button:			#ffff00	rgb(255, 255, 0)	hsl(60, 100%, 50%)
@@ -10,6 +13,3 @@ placeholder		#7A6666 @50%
 # Dependency
 react router dom
 npm install react-router-dom --save
-
-// crud video tutorial for student table data
-progress: 01:06:00
