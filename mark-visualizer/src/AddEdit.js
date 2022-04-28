@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useHistory, useParams, Link } from "react-router-dom";
 import axios from "axios";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import "./AddEdit.css";
 import "./Sidebar.css";
 // import "./AddStudent.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const initialState = {
     s_Id: "",
@@ -80,10 +80,11 @@ export const AddEdit = () => {
                             Section: "",
                         });
                     })
-                    // .catch((err) => toast.error(err.response.data));
-                    .catch((err) => alert(err.response.data));
-                // toast.success("Values Added Sucessfully");
-                alert("Values Added Sucessfully");
+                    .catch((err) => toast.error(err.response.data));
+                // .catch((err) => alert(err.response.data));
+                toast.success("Student Added Sucessfully", {
+                    position: "top-center",
+                });
             } else {
                 axios
                     .put(`http://localhost:5002/api/update/${id}`, {
@@ -107,13 +108,14 @@ export const AddEdit = () => {
                             Section: "",
                         });
                     })
-                    // .catch((err) => toast.error(err.response.data));
-                    .catch((err) => alert(err.response.data));
-                // toast.success("Values Added Sucessfully");
-                alert("Values Updated Sucessfully");
+                    .catch((err) => toast.error(err.response.data));
+                // .catch((err) => alert(err.response.data));
+
+                toast.success("Student Added Sucessfully");
             }
 
-            setTimeout(() => history.push("/"), 500);
+            // redirect to student page after 500ms
+            // setTimeout(() => history.push("/"), 500);
         }
     };
 
@@ -125,18 +127,19 @@ export const AddEdit = () => {
 
     return (
         <div className="newStudent__Profile">
-            <div className="sidebar">
-                <Link to="/Page" style={text__style}>
+            <ToastContainer />
+            <div className="addForm__sidebar">
+                <Link to="/students" style={text__style}>
                     <div className="navbar__options">Students</div>
                 </Link>
 
-                <Link to="/Programmes" style={text__style}>
+                <Link to="/programmes" style={text__style}>
                     <div className="navbar__options">Programs</div>
                 </Link>
-                <Link to="/Results" style={text__style}>
+                <Link to="/results" style={text__style}>
                     <div className="navbar__options">Results</div>
                 </Link>
-                <Link to="/Analytics" style={text__style}>
+                <Link to="/analytics" style={text__style}>
                     <div
                         className="navbar__options"
                         onClick={(event) =>
@@ -147,15 +150,15 @@ export const AddEdit = () => {
                         Analytics
                     </div>
                 </Link>
-                <Link to="/Setting" style={text__style}>
-                    <div className="navbar__options">Prediction</div>
+                <Link to="/prediction" style={text__style}>
+                    <div className="navbar__options">prediction</div>
                 </Link>
             </div>
 
             {/* studnet */}
             <div className="page__container">
                 {/* <ToastContainer theme="dark" /> */}
-                <div style={{ marginTop: "100px" }}>
+                <div>
                     <form
                         style={{
                             padding: "15px",

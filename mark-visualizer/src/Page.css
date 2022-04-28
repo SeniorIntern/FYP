@@ -1,7 +1,7 @@
 .student__page {
     display: flex;
     flex-direction: column;
-    margin-top: 26px;
+    margin-top: 16px;
 }
 
 .page__container {
@@ -9,8 +9,8 @@
     box-shadow: 0 0 20px rgb(66, 58, 58);
     /* background-color: #668cff; */
     max-width: fit-content;
-    height: fit-content;
-    padding: 1%;
+    max-height: 80%;
+    /* padding: 1%; */
     margin: auto;
 }
 
@@ -18,11 +18,10 @@
     display: flex;
     flex-direction: row;
     justify-content: left;
-    margin-bottom: 2%;
+    /* margin-bottom: 2%; */
     font-size: 20px;
     margin-left: 20px;
 }
-
 
 /* table border */
 .styled-table {

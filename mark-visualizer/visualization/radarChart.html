@@ -13,25 +13,25 @@
                 font-family: jetbrains-mono;
             }
 
-            .chartMenu {
-                width: 100vw;
+            .radarChartMenu {
+                width: 60w;
                 color: rgb(4, 197, 204);
                 text-align: center;
             }
 
-            .chartMenu p {
+            .radarChartMenu p {
                 font-size: 20px;
                 text-align: center;
                 color: black;
             }
 
-            .chartCard {
+            .radarChartCard {
                 display: flex;
                 align-items: center;
                 justify-content: center;
             }
 
-            .chartBox {
+            .radarradarChartBox {
                 width: 40vw;
                 padding: 10px;
                 border-radius: 20px;
@@ -41,11 +41,14 @@
         </style>
     </head>
     <body>
-        <div class="chartMenu">
+        <div class="radarChartMenu">
             <p>Performance of Individual Sections</p>
         </div>
-        <div class="chartCard">
-            <div class="chartBox">
+        <div
+            class="radarChartCard"
+            style="height: 60vh; width: 80vh; border: 2px solid black"
+        >
+            <div class="radarChartBox">
                 <canvas id="myChart"></canvas>
             </div>
         </div>

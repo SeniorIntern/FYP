@@ -1,0 +1,31 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: jetbrains-mono;
+}
+
+.radarChartMenu {
+    width: 100vw;
+    color: rgb(4, 197, 204);
+    text-align: center;
+}
+
+.radarChartMenu p {
+    font-size: 20px;
+    text-align: center;
+    color: black;
+}
+
+.radarChartCard {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.radarChartBox {
+    width: 40vw;
+    padding: 10px;
+    border-radius: 20px;
+    border: 3px solid rgb(3, 16, 20);
+    background: white;
+}

@@ -57,17 +57,17 @@ export const Page = () => {
             {/* <ToastContainer /> */}
             {/* Side-Navbar */}
             <div className="sidebar">
-                <Link to="/Page" style={text__style}>
+                <Link to="/students" style={text__style}>
                     <div className="navbar__options">Students</div>
                 </Link>
 
-                <Link to="/Programmes" style={text__style}>
+                <Link to="/programmes" style={text__style}>
                     <div className="navbar__options">Programs</div>
                 </Link>
-                <Link to="/Results" style={text__style}>
+                <Link to="/results" style={text__style}>
                     <div className="navbar__options">Results</div>
                 </Link>
-                <Link to="/Analytics" style={text__style}>
+                <Link to="/analytics" style={text__style}>
                     <div
                         className="navbar__options"
                         onClick={(event) =>
@@ -78,7 +78,7 @@ export const Page = () => {
                         Analytics
                     </div>
                 </Link>
-                <Link to="/Setting" style={text__style}>
+                <Link to="/prediction" style={text__style}>
                     <div className="navbar__options">Prediction</div>
                 </Link>
             </div>
@@ -94,7 +94,7 @@ export const Page = () => {
                     <FcSearch style={ico} />
                     {/* <img src={searchIco} style={ico} alt="" /> */}
 
-                    <Link to="/addContact">
+                    <Link to="/addStudent">
                         <button className="page_btn">Add Student</button>
                     </Link>
                     {/* 

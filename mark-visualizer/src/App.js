@@ -10,6 +10,7 @@ import { Programmes } from "./Programmes";
 import Results from "./Results";
 import { UserContext } from "./UserContext";
 import { useMemo, useState } from "react";
+import Prediction from "./Prediction";
 
 function App() {
     // setup state for userContext
@@ -23,12 +24,17 @@ function App() {
                     {/* <Route path="/dashboard">
                         <Dashboard />
                     </Route> */}
-                    <Route path="/addContact">
+                    <Route path="/addStudent">
                         <Header />
                         <AddEdit />
                     </Route>
+                    
+                    <Route path="/prediction">
+                        <Header />
+                        <Prediction />
+                    </Route>
 
-                    <Route path="/Register">
+                    <Route path="/register">
                         <Register />
                     </Route>
 
@@ -36,7 +42,7 @@ function App() {
                         <Login />
                     </Route> */}
 
-                    <Route path="/Login">
+                    <Route path="/login">
                         <Login />
                     </Route>
 
@@ -47,25 +53,25 @@ function App() {
 
                     {/* wrap pages with context provider */}
                     <UserContext.Provider value={providerValue}>
-                        <Route path="/Page">
+                        <Route path="/students">
                             <Header />
                             <Page />
                         </Route>
 
-                        <Route path="/Programmes">
+                        <Route path="/programmes">
                             <Header />
                             <Programmes />
                         </Route>
                     </UserContext.Provider>
 
-                    <Route path="/Results">
+                    <Route path="/results">
                         <Header />
                         <Results />
                     </Route>
 
                     {/* path-Analytics not working properly */}
                     <Route
-                        path="/Analytics"
+                        path="/analytics"
                         component={() => {
                             window.location.href =
                                 "http://127.0.0.1:5500/visualization/lineChart.html";
