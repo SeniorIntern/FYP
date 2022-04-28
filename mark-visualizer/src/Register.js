@@ -37,6 +37,7 @@ function Register() {
                 <input
                     type="text"
                     placeholder="user ID"
+                    name="usrId"
                     onChange={(e) => {
                         setIdReg(e.target.value);
                     }}
@@ -44,23 +45,31 @@ function Register() {
                 <input
                     type="text"
                     placeholder="username"
+                    name="usrname"
                     onChange={(e) => {
                         setUsernameReg(e.target.value);
                     }}
                 />
                 <input
-                    type="text"
+                    type="password"
                     placeholder="password"
+                    name="passwd"
+                    maxLength={13}
                     onChange={(e) => {
                         setPasswordReg(e.target.value);
                     }}
                 />
-                <button onClick={register} className="login__registerButton">
+
+                <button onClick={register} className="reg__registerButton">
                     Register
                 </button>
-                <p style={{ margin: "auto" }}>Already Registered?</p>
+                <br />
+                <p style={{ margin: "auto" }} className="labelText">
+                    Already Registered?
+                </p>
+                <br />
                 <Link to="./login">
-                    <button className="login__signInButton">LOGIN</button>
+                    <button className="reg__signInButton">Login</button>
                 </Link>
             </div>
         </div>

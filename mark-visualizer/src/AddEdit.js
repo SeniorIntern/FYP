@@ -125,55 +125,52 @@ export const AddEdit = () => {
                     }}
                     onSubmit={handleSubmit}
                 >
-                    <label htmlFor="s_id">Student ID</label>
                     <input
                         type="text"
                         name="s_id"
                         id="s_id"
-                        placeholder="Your Name..."
-                        value={s_id}
+                        placeholder="Student ID"e={s_id}
                         onChange={handleInputChange}
                     />
-                    <label htmlFor="s_fname">First Name</label>
                     <input
                         type="text"
                         name="s_fname"
                         id="s_fname"
-                        placeholder="Your First Name..."
+                        placeholder="Student First Name"
                         value={s_fname || ""}
                         onChange={handleInputChange}
                     />
-                    <label htmlFor="s_lname">Last Name</label>
                     <input
                         type="text"
                         name="s_lname"
                         id="s_lname"
-                        placeholder="Your Last Name..."
+                        placeholder="Student Last Name"
                         value={s_lname || ""}
                         onChange={handleInputChange}
                     />
-                    <label htmlFor="s_batch">Batch</label>
                     <input
                         type="text"
                         name="s_batch"
                         id="s_batch"
-                        placeholder="Your student batch..."
+                        placeholder="Student Batch"
                         value={s_batch || ""}
                         onChange={handleInputChange}
                     />
-                    <label htmlFor="c_id">Course ID</label>
                     <input
                         type="text"
                         name="c_id"
                         id="c_id"
-                        placeholder="Your Course ID..."
+                        placeholder="Student Course ID"
                         value={c_id || ""}
                         onChange={handleInputChange}
                     />
-                    <input type="submit" value={id ? "Update" : "save"} />
-                    <Link to="/">
-                        <input type="button" value="Go Back" />
-                    </Link>
+                    <br />
+                    <div className="controlBtn">
+                        <input type="submit" value={id ? "Update" : "save"} />
+                        <Link to="/page">
+                            <input type="button" value="Go Back" />
+                        </Link>
+                    </div>
                 </form>
             </div>
         </div>

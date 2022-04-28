@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import "./Page.css";
 import "./Sidebar.css";
+import { UserContext } from "./UserContext";
+import { usrlogin } from "./usrlogin";
 
 export const Page = () => {
     const [data, setData] = useState([]);
@@ -29,6 +31,9 @@ export const Page = () => {
         color: "white",
     };
 
+    // user context message setup
+    const { user, setUser } = useContext(UserContext);
+
     return (
         <div className="student__page">
             {/* Side-Navbar */}
@@ -38,16 +43,24 @@ export const Page = () => {
                         <div className="navbar__options">Student</div>
                     </Link>
                     <Link to="/Programmes" style={text__style}>
-                        <div className="navbar__options">Programmes</div>
+                        <div className="navbar__options">Programs</div>
                     </Link>
                     <Link to="/Results" style={text__style}>
                         <div className="navbar__options">Results</div>
                     </Link>
                     <Link to="/Analytics" style={text__style}>
-                        <div className="navbar__options">Analytics</div>
+                        <div
+                            className="navbar__options"
+                            onClick={(event) =>
+                                (window.location.href =
+                                    "http://127.0.0.1:5500/visualization/lineChart.html")
+                            }
+                        >
+                            Analytics
+                        </div>
                     </Link>
                     <Link to="/Setting" style={text__style}>
-                        <div className="navbar__options">Setting</div>
+                        <div className="navbar__options">Prediction</div>
                     </Link>
                 </div>
             </div>
@@ -68,6 +81,20 @@ export const Page = () => {
                         <button>Filter</button>
                     </Link>
                 </div>
+                {/* showing user context here */}
+                <pre>{JSON.stringify(user, null, 2)}</pre>
+                {user ? (
+                    <button onClick={() => setUser(null)}>logout</button>
+                ) : (
+                    <button
+                        onClick={async () => {
+                            const user = await usrlogin();
+                            setUser(user);
+                        }}
+                    >
+                        login
+                    </button>
+                )}
                 <table className="styled-table">
                     <thead>
                         <tr>

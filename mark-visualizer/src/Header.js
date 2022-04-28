@@ -24,13 +24,8 @@ function Header() {
                         <span className="option__below">Sign In</span>
                     </Link>
                 </div>
-
                 <div className="header__option">
-                    <Link to="/Register" style={{ textDecoration: "none" }}>
-                        <span className="option__above">Your</span>
-                        <br />
-                        <span className="option__below">Profile</span>
-                    </Link>
+                    <span className="option__above">Log Out</span>
                 </div>
             </div>
         </div>

@@ -1,13 +1,13 @@
 body {
     background-color: #f0f2f5;
     margin: 0;
-    font-family: "Jetbrains mono";
+    font-family: "Arial";
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-    font-family: "Jetbrains mono";
+    font-family: "Arial";
 }
 
 button {
@@ -15,5 +15,4 @@ button {
     background-color: #ffff00;
     border: 1px solid black;
     margin-left: 14px;
-    height: fit-content;
 }

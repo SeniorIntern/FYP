@@ -20,3 +20,10 @@
     color: inherit;
     text-decoration: none;
 }
+
+.controlBtn{
+    display: flex;
+    flex-direction: row;
+    margin: 10px auto 10px auto;
+
+}

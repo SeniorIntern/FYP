@@ -5,6 +5,8 @@ import "./Login.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Link, useHistory } from "react-router-dom";
 import logo from "./img/logo.png";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Login() {
     const history = useHistory(); // change url after login
@@ -27,53 +29,67 @@ function Login() {
         }).then((response) => {
             if (response.data.message) {
                 // alert("Wrong username/password combination");
-                setLoginStatus(response.data.message);
+                toast.error(response.data.message);
+                // setLoginStatus();
             } else {
                 history.push("/Page");
                 // added later
                 // setLoginStatus(response.data[0].username);
+                toast.error(response.data[0].username);
             }
         });
     };
 
     return (
         <div className="login">
+            <ToastContainer
+                position="top-center"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="dark"
+            />
             <div className="loginContainer">
-                <div className="left__content">
-                    <img src={logo} alt="Facebook" />
-                    <h2 class=".introText">
-                        Analyze and visualize your exam' marks to <br /> better
-                        prepare exams
-                    </h2>
-                </div>
-
                 {/* login form here */}
                 <div className="right__content">
                     <img src={logo} alt="" className="web__logo" />
-                    <input
-                        type="text"
-                        placeholder="Enter Username"
-                        onChange={(e) => {
-                            setUsername(e.target.value);
-                        }}
-                    />
-                    <input
-                        type="password"
-                        placeholder="Enter Password"
-                        onChange={(e) => {
-                            setPassword(e.target.value);
-                        }}
-                    />
+                    <div className="inputContainer">
+                        <input
+                            type="text"
+                            placeholder="Username"
+                            required
+                            onChange={(e) => {
+                                setUsername(e.target.value);
+                            }}
+                        />
+                    </div>
+                    <div className="inputContainer">
+                        <input
+                            type="password"
+                            placeholder="Password"
+                            required
+                            onChange={(e) => {
+                                setPassword(e.target.value);
+                            }}
+                        />
+                    </div>
                     <button onClick={login} className="login__signInButton">
-                        Login
+                        <b>Log In</b>
                     </button>
                     <hr />
-
-                    <h1>{loginStatus}</h1>
-                    <p style={{ margin: "auto" }}>New User?</p>
+                    {/* disable login message, replace with toastify */}
+                    {/* <h1>{loginStatus}</h1> */}
+                    <p style={{ margin: "auto" }} className="labelText">
+                        New User?
+                    </p>
                     <Link to="./Register">
                         <button className="login__registerButton">
-                            CREATE your Account
+                            <b>Create new account</b>
                         </button>
                     </Link>
                 </div>
