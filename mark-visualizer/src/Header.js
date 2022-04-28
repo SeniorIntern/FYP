@@ -19,13 +19,15 @@ function Header() {
 
                 <div className="header__option">
                     <Link to="/Register" style={{ textDecoration: "none" }}>
-                        <span className="option__above">Hello Guest</span>
+                        <span className="option__above">Hello Admin</span>
                         <br />
-                        <span className="option__below">Sign In</span>
+                        <span className="option__below">nikhil</span>
                     </Link>
                 </div>
                 <div className="header__option">
-                    <span className="option__above">Log Out</span>
+                    <Link to="/login">
+                        <span className="option__above">Log Out</span>
+                    </Link>
                 </div>
             </div>
         </div>

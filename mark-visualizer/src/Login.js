@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Axios from "axios";
 import "./Login.css";
 // additional imports for testing
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Link, useHistory } from "react-router-dom";
 import logo from "./img/logo.png";
 import { ToastContainer, toast } from "react-toastify";
@@ -16,7 +15,7 @@ function Login() {
     const [password, setPassword] = useState("");
 
     // for testing
-    const [loginStatus, setLoginStatus] = useState("");
+    // const [loginStatus, setLoginStatus] = useState("");
 
     // added later
     // Axios.defaults.withCredentials = true;
@@ -35,25 +34,24 @@ function Login() {
                 history.push("/Page");
                 // added later
                 // setLoginStatus(response.data[0].username);
-                toast.error(response.data[0].username);
+                // toast.success("Login Sucessful. Welcome " + response.data[0].username + ". Redirecting...");
             }
         });
     };
 
+    toast.success("Logout sucessful!", {
+        position: "top-center",
+        autoClose: 9000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+    });
+
     return (
         <div className="login">
-            <ToastContainer
-                position="top-center"
-                autoClose={5000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-                theme="dark"
-            />
+            <ToastContainer />
             <div className="loginContainer">
                 {/* login form here */}
                 <div className="right__content">

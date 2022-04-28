@@ -5,20 +5,28 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./AddEdit.css";
 import "./Sidebar.css";
+// import "./AddStudent.css";
 
 const initialState = {
-    s_id: "",
-    s_fname: "",
-    s_lname: "",
-    s_batch: "",
-    c_id: "",
+    s_Id: "",
+    s_Fname: "",
+    s_Lname: "",
+    s_Batch: "",
+    c_Id: "",
+    Year: "",
+    Section: "",
+};
+
+const text__style = {
+    textDecoration: "none",
+    color: "white",
 };
 
 export const AddEdit = () => {
     const [state, setState] = useState(initialState);
 
     // destructuring from state
-    const { s_id, s_fname, s_lname, s_batch, c_id } = state;
+    const { s_Id, s_Fname, s_Lname, s_Batch, c_Id, Year, Section } = state;
 
     const history = useHistory();
 
@@ -28,7 +36,7 @@ export const AddEdit = () => {
     // run only after getting id
     useEffect(() => {
         axios
-            .get(`http://localhost:5000/api/get/${id}`)
+            .get(`http://localhost:5002/api/get/${id}`)
             .then((resp) => setState({ ...resp.data[0] }));
     }, [id]);
 
@@ -36,28 +44,40 @@ export const AddEdit = () => {
     const handleSubmit = (e) => {
         // prevent default behaviour of browser
         e.preventDefault();
-        if (!s_id || !s_fname || !s_lname || !s_batch || !c_id) {
+        if (
+            !s_Id ||
+            !s_Fname ||
+            !s_Lname ||
+            !s_Batch ||
+            !c_Id ||
+            !Year ||
+            !Section
+        ) {
             // alert("Please provide values");
             toast.error("Please provide values");
         } else {
             // if id exists then update else post
             if (!id) {
                 axios
-                    .post("http://localhost:5000/api/post", {
-                        s_id,
-                        s_fname,
-                        s_lname,
-                        s_batch,
-                        c_id,
+                    .post("http://localhost:5002/api/post", {
+                        s_Id,
+                        s_Fname,
+                        s_Lname,
+                        s_Batch,
+                        c_Id,
+                        Year,
+                        Section,
                     })
                     // clear input fields after use submits the value
                     .then(() => {
                         setState({
-                            s_id: "",
-                            s_fname: "",
-                            s_lname: "",
-                            s_batch: "",
-                            c_id: "",
+                            s_Id: "",
+                            s_Fname: "",
+                            s_Lname: "",
+                            s_Batch: "",
+                            c_Id: "",
+                            Year: "",
+                            Section: "",
                         });
                     })
                     // .catch((err) => toast.error(err.response.data));
@@ -66,21 +86,25 @@ export const AddEdit = () => {
                 alert("Values Added Sucessfully");
             } else {
                 axios
-                    .put(`http://localhost:5000/api/update/${id}`, {
-                        s_id,
-                        s_fname,
-                        s_lname,
-                        s_batch,
-                        c_id,
+                    .put(`http://localhost:5002/api/update/${id}`, {
+                        s_Id,
+                        s_Fname,
+                        s_Lname,
+                        s_Batch,
+                        c_Id,
+                        Year,
+                        Section,
                     })
                     // clear input fields after use submits the value
                     .then(() => {
                         setState({
-                            s_id: "",
-                            s_fname: "",
-                            s_lname: "",
-                            s_batch: "",
-                            c_id: "",
+                            s_Id: "",
+                            s_Fname: "",
+                            s_Lname: "",
+                            s_Batch: "",
+                            c_Id: "",
+                            Year: "",
+                            Section: "",
                         });
                     })
                     // .catch((err) => toast.error(err.response.data));
@@ -101,77 +125,114 @@ export const AddEdit = () => {
 
     return (
         <div className="newStudent__Profile">
-            <ToastContainer theme="dark" />
-
             <div className="sidebar">
-                <div className="sidebar__content">
-                    <Link to="/Page">
-                        <div className="navbar__options">Student</div>
-                    </Link>
-                    <div className="navbar__options">Enrollment</div>
-                    <div className="navbar__options">Leaderboard</div>
-                    <div className="navbar__options">Analytics</div>
-                    <div className="navbar__options">Setting</div>
-                </div>
+                <Link to="/Page" style={text__style}>
+                    <div className="navbar__options">Students</div>
+                </Link>
+
+                <Link to="/Programmes" style={text__style}>
+                    <div className="navbar__options">Programs</div>
+                </Link>
+                <Link to="/Results" style={text__style}>
+                    <div className="navbar__options">Results</div>
+                </Link>
+                <Link to="/Analytics" style={text__style}>
+                    <div
+                        className="navbar__options"
+                        onClick={(event) =>
+                            (window.location.href =
+                                "http://127.0.0.1:5500/visualization/lineChart.html")
+                        }
+                    >
+                        Analytics
+                    </div>
+                </Link>
+                <Link to="/Setting" style={text__style}>
+                    <div className="navbar__options">Prediction</div>
+                </Link>
             </div>
 
-            <div style={{ marginTop: "100px" }}>
-                <form
-                    style={{
-                        margin: "auto",
-                        padding: "15px",
-                        maxWidth: "400px",
-                        alignContent: "center",
-                    }}
-                    onSubmit={handleSubmit}
-                >
-                    <input
-                        type="text"
-                        name="s_id"
-                        id="s_id"
-                        placeholder="Student ID"e={s_id}
-                        onChange={handleInputChange}
-                    />
-                    <input
-                        type="text"
-                        name="s_fname"
-                        id="s_fname"
-                        placeholder="Student First Name"
-                        value={s_fname || ""}
-                        onChange={handleInputChange}
-                    />
-                    <input
-                        type="text"
-                        name="s_lname"
-                        id="s_lname"
-                        placeholder="Student Last Name"
-                        value={s_lname || ""}
-                        onChange={handleInputChange}
-                    />
-                    <input
-                        type="text"
-                        name="s_batch"
-                        id="s_batch"
-                        placeholder="Student Batch"
-                        value={s_batch || ""}
-                        onChange={handleInputChange}
-                    />
-                    <input
-                        type="text"
-                        name="c_id"
-                        id="c_id"
-                        placeholder="Student Course ID"
-                        value={c_id || ""}
-                        onChange={handleInputChange}
-                    />
-                    <br />
-                    <div className="controlBtn">
-                        <input type="submit" value={id ? "Update" : "save"} />
+            {/* studnet */}
+            <div className="page__container">
+                {/* <ToastContainer theme="dark" /> */}
+                <div style={{ marginTop: "100px" }}>
+                    <form
+                        style={{
+                            padding: "15px",
+                            maxWidth: "400px",
+                            alignContent: "center",
+                            textAlign: "center",
+                        }}
+                        onSubmit={handleSubmit}
+                    >
+                        <input
+                            type="text"
+                            name="s_Id"
+                            id="s_Id"
+                            placeholder="Student ID"
+                            e={s_Id}
+                            onChange={handleInputChange}
+                        />
+                        <input
+                            type="text"
+                            name="s_Fname"
+                            id="s_Fname"
+                            placeholder="Student First Name"
+                            value={s_Fname || ""}
+                            onChange={handleInputChange}
+                        />
+                        <input
+                            type="text"
+                            name="s_Lname"
+                            id="s_Lname"
+                            placeholder="Student Last Name"
+                            value={s_Lname || ""}
+                            onChange={handleInputChange}
+                        />
+                        <input
+                            type="text"
+                            name="s_Batch"
+                            id="s_Batch"
+                            placeholder="Student Batch"
+                            value={s_Batch || ""}
+                            onChange={handleInputChange}
+                        />
+                        <input
+                            type="text"
+                            name="c_Id"
+                            id="c_Id"
+                            placeholder="Student Course ID"
+                            value={c_Id || ""}
+                            onChange={handleInputChange}
+                        />
+                        <input
+                            type="text"
+                            name="Year"
+                            id="Year"
+                            placeholder="Student Year"
+                            value={Year || ""}
+                            onChange={handleInputChange}
+                        />
+                        <input
+                            type="text"
+                            name="Section"
+                            id="Section"
+                            placeholder="Student Section"
+                            value={Section || ""}
+                            onChange={handleInputChange}
+                        />
+                        <br />
+                        <input
+                            type="submit"
+                            className="actionBtn"
+                            value={id ? "Update" : "save"}
+                        />
+                        <br />
                         <Link to="/page">
                             <input type="button" value="Go Back" />
                         </Link>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
     );

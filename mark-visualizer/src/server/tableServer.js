@@ -1,6 +1,5 @@
 const express = require("express");
 const app = express();
-const bodyParser = require("body-parser");
 const cors = require("cors");
 const mysql = require("mysql");
 
@@ -23,12 +22,12 @@ app.get("/api/get", (req, res) => {
 });
 
 app.post("/api/post", (req, res) => {
-    const { s_Id, s_Fname, s_Lname, s_Batch, c_Id } = req.body;
+    const { s_Id, s_Fname, s_Lname, s_Batch, c_Id, Year, Section } = req.body;
     const sqlInsert =
-        "Insert Into mark_visualizer.students (s_Id, s_Fname, s_Lname, s_Batch, c_Id) values(?, ?, ?, ?, ?)";
+        "Insert Into mark_visualizer.students (s_Id, s_Fname, s_Lname, s_Batch, c_Id, Year, Section) values(?, ?, ?, ?, ?, ?, ?)";
     db.query(
         sqlInsert,
-        [s_Id, s_Fname, s_Lname, s_Batch, c_Id],
+        [s_Id, s_Fname, s_Lname, s_Batch, c_Id, Year, Section],
         (error, result) => {
             if (error) {
                 console.log(error);

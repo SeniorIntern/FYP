@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { toast, Toast } from "react-toastify";
+// import { toast, Toast } from "react-toastify";
 // import { Toast } from "react-toastify/dist/components";
 import axios from "axios";
 import "./Page.css";
@@ -36,24 +36,32 @@ export const Programmes = () => {
 
     return (
         <div className="student__page">
+            {/* Side-Navbar */}
             <div className="sidebar">
-                <div className="sidebar__content">
-                    <Link to="/Page" style={text__style}>
-                        <div className="navbar__options">Student</div>
-                    </Link>
-                    <Link to="/Programmes" style={text__style}>
-                        <div className="navbar__options">Programmes</div>
-                    </Link>
-                    <Link to="/Results" style={text__style}>
-                        <div className="navbar__options">Results</div>
-                    </Link>
-                    <Link to="/Analytics" style={text__style}>
-                        <div className="navbar__options">Analytics</div>
-                    </Link>
-                    <Link to="/Setting" style={text__style}>
-                        <div className="navbar__options">Setting</div>
-                    </Link>
-                </div>
+                <Link to="/Page" style={text__style}>
+                    <div className="navbar__options">Student</div>
+                </Link>
+
+                <Link to="/Programmes" style={text__style}>
+                    <div className="navbar__options">Programs</div>
+                </Link>
+                <Link to="/Results" style={text__style}>
+                    <div className="navbar__options">Results</div>
+                </Link>
+                <Link to="/Analytics" style={text__style}>
+                    <div
+                        className="navbar__options"
+                        onClick={(event) =>
+                            (window.location.href =
+                                "http://127.0.0.1:5500/visualization/lineChart.html")
+                        }
+                    >
+                        Analytics
+                    </div>
+                </Link>
+                <Link to="/Setting" style={text__style}>
+                    <div className="navbar__options">Prediction</div>
+                </Link>
             </div>
 
             <div className="page-container">

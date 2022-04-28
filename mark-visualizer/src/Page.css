@@ -1,16 +1,17 @@
 .student__page {
     display: flex;
-    flex-direction: row;
-    margin-top: 30px;
+    flex-direction: column;
+    margin-top: 26px;
 }
 
 .page__container {
-    border: 2px solid #24405c;
     border-radius: 12px;
-    background-color: #668cff;
+    box-shadow: 0 0 20px rgb(66, 58, 58);
+    /* background-color: #668cff; */
     max-width: fit-content;
     height: fit-content;
-    padding: 2%;
+    padding: 1%;
+    margin: auto;
 }
 
 .table__options {
@@ -22,14 +23,11 @@
     margin-left: 20px;
 }
 
-input {
-    max-width: fit-content;
-}
 
 /* table border */
 .styled-table {
     border-collapse: collapse;
-    border: 2px solid #668cff;
+    /* border: 2px solid #668cff; */
     margin: auto;
     font-size: 0.9em;
     font-family: sans-serif;
@@ -54,5 +52,5 @@ input {
 }
 
 .styled-table tbody tr:last-of-type {
-    border-bottom: 2px solid #668cff;
+    border-bottom: 2px solid #121212;
 }

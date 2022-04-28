@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Axios from "axios";
 import "./Register.css";
 import logo from "./img/logo.png";
 import { Link } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Register() {
     // Defining useStates
@@ -28,6 +30,18 @@ function Register() {
             console.log(response);
         });
     }, []);
+    */
+    /*
+    // Toast emitter
+    toast.error("Fill all the input fields with appropriate data", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+    });
     */
 
     return (

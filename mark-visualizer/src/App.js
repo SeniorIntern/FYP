@@ -20,6 +20,9 @@ function App() {
         <Router>
             <div className="App">
                 <Switch>
+                    {/* <Route path="/dashboard">
+                        <Dashboard />
+                    </Route> */}
                     <Route path="/addContact">
                         <Header />
                         <AddEdit />
