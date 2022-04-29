@@ -17,6 +17,7 @@ const saltRounds = 10;
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
+const { toast } = require("react-toastify");
 
 app.use(express.json()); // automatically parse every object sent from fron-end
 app.use(
@@ -58,6 +59,7 @@ app.post("/register", (req, res) => {
         if (err) {
             console.log(err);
         }
+
         db.query(
             "INSERT INTO mark_visualizer.users (id, username, password) VALUES (?,?,?)",
             [id, username, hash],
@@ -87,9 +89,6 @@ app.post("/login", (req, res) => {
         "SELECT * FROM mark_visualizer.users WHERE username =?;",
         username,
         (err, result) => {
-            // if (err) {
-            //     res.send({ err: err });
-            // }
             if (result.length > 0) {
                 bcrypt.compare(
                     password,
@@ -116,7 +115,7 @@ app.post("/login", (req, res) => {
 // settings listener of our express server
 app.listen(3001, (err) => {
     if (!err) {
-        console.log("Connection Sucessful :D");
+        console.log("Connection Sucessful. Runnign on port 3001");
     } else {
         console.log("port closed");
     }

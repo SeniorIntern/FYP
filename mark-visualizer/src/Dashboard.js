@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 import "./Page.css";
 import "./Sidebar.css";
+// import { UserContext } from "./UserContext";
+import { FcSearch } from "react-icons/fc";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -16,22 +19,10 @@ const ico = {
     cursor: "pointer",
 };
 
-function Prediction() {
+function Dashboard() {
     return (
         <div className="student__page">
             {/* <ToastContainer /> */}
-            <ToastContainer
-                position="top-center"
-                autoClose={5000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-                theme="dark"
-            />
             {/* Side-Navbar */}
             <div className="sidebar">
                 <Link to="/students" style={text__style}>
@@ -68,29 +59,35 @@ function Prediction() {
                         placeholder="Student ID"
                         style={{ width: "fit-content" }}
                     />
+                    <FcSearch style={ico} />
                     {/* <img src={searchIco} style={ico} alt="" /> */}
 
-                    {/* <Link to="/addStudent"> */}
-                    <button className="page_btn">
-                        Predict
+                    <Link to="/addStudent">
+                        <button className="page_btn">Add Student</button>
+                    </Link>
+                    {/* 
+                    <Link>
+                        <button className="page_btn">Filter</button>
+                    </Link> */}
+                </div>
+
+                {/* showing user context here */}
+                {/* <pre>{JSON.stringify(user, null, 2)}</pre>
+                {user ? (
+                    <button onClick={() => setUser(null)}>logout</button>
+                ) : (
+                    <button
+                        onClick={async () => {
+                            const user = await usrlogin();
+                            setUser(user);
+                        }}
+                    >
+                        login
                     </button>
-                    {/* </Link> */}
-                </div>
-                <div className="studentDetails">
-                    <div>
-                        <p>Student Name: Ram Krishna</p>
-                        <p>Batch: 2019 </p>
-                        <p>Current Year: 3rd</p>
-                        <br />
-                        <h4>First Year Grade: 74</h4>
-                        <h4>Second Year Grade: 65</h4>
-                        <br />
-                        <h3>Prediction for Final Year: 54</h3>
-                    </div>
-                </div>
+                )} */}
             </div>
         </div>
     );
 }
 
-export default Prediction;
+export default Dashboard;

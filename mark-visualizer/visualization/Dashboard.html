@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <!-- line stylesheet -->
+        <link rel="stylesheet" href="MarkVisualize.css" />
+        <link rel="stylesheet" href="radarChart.css" />
+        <title>MarkVisualizer-Dashboard</title>
+        <link rel="icon" type="image/x-icon" href="../public/faviconIcon.ico">
+        <style>
+            a{
+                text-decoration: none;
+                /* color: white; */
+                color: black;
+                font-family: Arial;
+            }
+            
+            .dashNavbar {
+                top: 0;
+                z-index: 100;
+                align-items: center;
+                background-color: #24405c;
+                height: 60px;
+                display: flex;
+                flex-direction: row;
+                margin: auto;
+                margin-top: 20px;
+                width: fit-content;
+                height: 40px;
+                border-radius: 1rem;
+                color: white;
+                margin-bottom: 20px;
+                margin-top: 60px;
+            }
+
+            .dashNavbar span{
+                color: white;
+                margin-left: 20px;
+                font-family: Arial;
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- HEADER CONTENT -->
+        <div class="header">
+            <div class="header__content">
+                <a href="http://localhost:3000/students"
+                    ><img
+                        class="header__logo"
+                        src="../src/img/icon.png"
+                        alt="contains logo"
+                /></a>
+                <div class="space__maker"></div>
+                <div class="header__option">
+                    <a style="text-decoration: none"
+                        ><span class="option__above">Hello Admin</span
+                        ><br /><span class="option__below">nikhil</span></a
+                    >
+                </div>
+                
+                <div class="header__option">
+                    <a href="http://localhost:3000/students" style="text-decoration: none">
+                        <span class="option__above">log Out</span></a
+                    >
+                </div>
+            </div>
+        </div>
+
+        <div class="dashNavbar">
+                <a href="http://localhost:3000/students" >
+                    <span>Students</span>
+                </a>
+
+                <a href="http://localhost:3000/programmes">
+                    <span>Programs</span>
+                </a>
+                <a href="http://localhost:3000/results">
+                    <span>Results</span>
+                </a>
+                <a href="http://localhost:3000/analytics">
+                    <span>
+                        Analytics
+                    </span>
+                </a>
+                <a href="http://localhost:3000/prediction">
+                    <span style="margin-right: 10px;">Prediction</span>
+                </a>
+            </span>
+        </div>
+        
+        <!-- PAGE CONTENT: Students Performance on Individual Modules -->
+        <div class="visualizations">
+            <!-- first chart -->
+            <div
+                class="radar__chartCard"
+                style="height: 30vh; width: 30vh; margin: auto"
+            >
+                <div class="radar__chartBox">
+                    <h4 style="text-align: center">Most Performing Section</h4>
+                    <canvas id="radar__chart"></canvas>
+                </div>
+            </div>
+
+            <!-- third chart -->
+            <div
+                class="line__chartCard"
+                style="height: 60vh; width: 60vh; margin-right: 10px"
+            >
+                <div class="line__chartBox">
+                    <h4 style="text-align: center">Module with best performance</h4>
+                    <canvas id="lineChart"></canvas>
+                </div>
+            </div>
+
+            <!-- second chart -->
+            <div
+                class="doughnut__chartCard"
+                style="height: 40vh; width: 30vh; margin: auto"
+            >
+                <div class="doughnut__chartBox">
+                    <h4 style="text-align: center">
+                        Most Performing Student: 19031008
+                    </h4>
+                    <canvas id="doughnut__Chart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- include Chart.js in page -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+        <!-- first chart setup -->
+        <script>
+            // AJAX SETUP
+            const xmlhttp = new XMLHttpRequest();
+            const url = "http://localhost:5005/api/get/";
+
+            xmlhttp.open("GET", url, true);
+            xmlhttp.send();
+
+            // state 4 is for complete state, and ErrorStatus at 200 or 400 as u like
+            xmlhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    const datapoints = JSON.parse(this.responseText);
+                    console.log(datapoints);
+
+                    // Dataset 1
+                    const Avggrade = datapoints.map(function (index) {
+                        return index.Average;
+                    });
+
+                    // Dataset
+                    const TG406grade = datapoints.map(function (index) {
+                        return index.TG406;
+                    });
+
+                    // for student id
+                    const labelsid = datapoints.map(function (index) {
+                        return index.s_Id;
+                    });
+                    console.log(labelsid);
+
+                    // setup for bar chart
+                    const labels = labelsid;
+
+                    const data = {
+                        labels: labels,
+                        datasets: [
+                            {
+                                label: "Overall Module Average",
+                                backgroundColor: "rgb(255, 0, 0)",
+                                borderColor: "rgb(255, 0, 0)",
+                                data: Avggrade,
+                            },
+
+                            {
+                                label: "TG406-Module",
+                                backgroundColor: "rgb(76, 255, 0)",
+                                borderColor: "rgb(76, 255, 0)",
+                                data: TG406grade,
+                            },
+                        ],
+                    };
+
+                    // bar_config for bar chart
+                    const bar_config = {
+                        type: "line",
+                        data: data,
+                        options: {},
+                    };
+
+                    // render the chart
+                    const lineChart = new Chart(
+                        document.getElementById("lineChart"),
+                        bar_config
+                    );
+                }
+            };
+        </script>
+
+        <!-- second chart setup -->
+        <script>
+            const doughnut__data = {
+                labels: ["CC12", "CC49", "TG406", "SG12"],
+                datasets: [
+                    {
+                        label: "My First Dataset",
+                        data: [76, 65, 87, 70],
+                        backgroundColor: [
+                            "rgb(76, 255, 0)",
+                            "rgb(255, 255, 0)",
+                            "rgb(36, 64, 92)",
+                            "rgb(255, 0, 0)",
+                        ],
+                        hoverOffset: 4,
+                    },
+                ],
+            };
+
+            // state 4 is for complete state, and ErrorStatus at 200 or 400 as u like
+
+            // doughnut_config for bar chart
+            const doughnut_config = {
+                type: "doughnut",
+                data: doughnut__data,
+            };
+
+            // render the chart
+            const doughnut__Chart = new Chart(
+                document.getElementById("doughnut__Chart"),
+                doughnut_config
+            );
+        </script>
+
+        <!-- third chart setup -->
+        <script>
+            const radar__data = {
+                labels: ["CC12", "CC49", "TG406", "SG12"],
+                datasets: [
+                    {
+                        label: "Year3 Section C4",
+                        data: [65, 59, 90, 81],
+                        fill: true,
+                        backgroundColor: "rgba(255, 99, 132, 0.2)",
+                        borderColor: "rgb(255, 99, 132)",
+                        pointBackgroundColor: "rgb(255, 99, 132)",
+                        pointBorderColor: "#fff",
+                        pointHoverBackgroundColor: "#fff",
+                        pointHoverBorderColor: "rgb(255, 99, 132)",
+                    },
+                    {
+                        label: "Year3 Average",
+                        data: [28, 48, 40, 19],
+                        fill: true,
+                        backgroundColor: "rgba(54, 162, 235, 0.2)",
+                        borderColor: "rgb(54, 162, 235)",
+                        pointBackgroundColor: "rgb(54, 162, 235)",
+                        pointBorderColor: "#fff",
+                        pointHoverBackgroundColor: "#fff",
+                        pointHoverBorderColor: "rgb(54, 162, 235)",
+                    },
+                ],
+            };
+
+            const radar_config = {
+                type: "radar",
+                data: radar__data,
+                options: {
+                    elements: {
+                        line: {
+                            borderWidth: 3,
+                        },
+                    },
+                },
+            };
+
+            // render the chart
+            const radar__chart = new Chart(
+                document.getElementById("radar__chart"),
+                radar_config
+            );
+        </script>
+    </body>
+</html>

@@ -14,13 +14,18 @@ function Register() {
 
     const register = () => {
         // define variables username, password to use in backend
-        Axios.post("http://localhost:3001/register", {
-            username: usernameReg,
-            password: passwordReg,
-            id: idReg,
-        }).then((response) => {
-            console.log(response);
-        });
+        try {
+            Axios.post("http://localhost:3001/register", {
+                username: usernameReg,
+                password: passwordReg,
+                id: idReg,
+            }).then((response) => {
+                console.log(response);
+            });
+            toast.success("User Registered Successfully");
+        } catch {
+            toast.warning("User already exists");
+        }
     };
 
     // added later
@@ -31,21 +36,21 @@ function Register() {
         });
     }, []);
     */
-    /*
-    // Toast emitter
-    toast.error("Fill all the input fields with appropriate data", {
-        position: "top-center",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-    });
-    */
 
     return (
         <div className="register">
+            <ToastContainer
+                position="top-center"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="dark"
+            />
             <div className="registerContainer">
                 <img src={logo} alt="" className="web__logo" />
                 <input
@@ -77,6 +82,7 @@ function Register() {
                 <button onClick={register} className="reg__registerButton">
                     Register
                 </button>
+
                 <br />
                 <p style={{ margin: "auto" }} className="labelText">
                     Already Registered?

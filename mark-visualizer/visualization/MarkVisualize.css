@@ -1,7 +1,7 @@
 * {
     margin: 0;
     padding: 0;
-    font-family: jetbrains-mono;
+    font-family: Arial;
 }
 
 .header__content {
@@ -21,29 +21,23 @@
     margin: 0 20px;
 }
 
-.chartMenu {
-    width: 100vw;
-    color: rgb(4, 197, 204);
-    text-align: center;
+.visualizations {
+    display: flex;
+    flex-direction: row;
 }
 
-.chartMenu p {
-    font-size: 20px;
-    text-align: center;
-    color: black;
-}
-
-.chartCard {
+.line__chartCard {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.chartBox {
+.line__chartBox {
     width: 40vw;
     padding: 10px;
     border-radius: 20px;
-    border: 3px solid rgb(3, 16, 20);
+    box-shadow: 0 0 20px rgb(66, 58, 58);
+    border: none;
     background: white;
 }
 
@@ -66,4 +60,34 @@
 
 .option__below {
     color: white;
+}
+
+.doughnut__chartCard {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.doughnut__chartBox {
+    width: 40vw;
+    padding: 10px;
+    border-radius: 20px;
+    border: none;
+    box-shadow: 0 0 20px rgb(66, 58, 58);
+    background: white;
+}
+
+.radar__chartCard {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.radar__chartBox {
+    width: 40vw;
+    padding: 10px;
+    border-radius: 20px;
+    border: none;
+    box-shadow: 0 0 20px rgb(66, 58, 58);
+    background: white;
 }

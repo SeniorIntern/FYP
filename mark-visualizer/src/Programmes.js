@@ -38,7 +38,7 @@ export const Programmes = () => {
         <div className="student__page">
             {/* Side-Navbar */}
             <div className="sidebar">
-                <Link to="/Page" style={text__style}>
+                <Link to="/students" style={text__style}>
                     <div className="navbar__options">Student</div>
                 </Link>
 

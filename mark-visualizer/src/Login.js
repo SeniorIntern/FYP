@@ -27,31 +27,35 @@ function Login() {
             password: password,
         }).then((response) => {
             if (response.data.message) {
-                // alert("Wrong username/password combination");
                 toast.error(response.data.message);
                 // setLoginStatus();
             } else {
-                history.push("/Page");
-                // added later
+                window.location.href =
+                    "http://127.0.0.1:5500/visualization/dashboard.html";
                 // setLoginStatus(response.data[0].username);
-                // toast.success("Login Sucessful. Welcome " + response.data[0].username + ". Redirecting...");
+                toast.success(
+                    "Login Sucessful. Welcome " +
+                        response.data[0].username +
+                        ". Redirecting..."
+                );
             }
         });
     };
 
-    toast.success("Logout sucessful!", {
-        position: "top-center",
-        autoClose: 9000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-    });
-
     return (
         <div className="login">
-            <ToastContainer />
+            <ToastContainer
+                position="top-center"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="dark"
+            />
             <div className="loginContainer">
                 {/* login form here */}
                 <div className="right__content">
@@ -66,6 +70,7 @@ function Login() {
                             }}
                         />
                     </div>
+
                     <div className="inputContainer">
                         <input
                             type="password"
@@ -76,15 +81,17 @@ function Login() {
                             }}
                         />
                     </div>
+
+                    {/* Login Button setup with onClick event */}
                     <button onClick={login} className="login__signInButton">
                         <b>Log In</b>
                     </button>
+
                     <hr />
-                    {/* disable login message, replace with toastify */}
-                    {/* <h1>{loginStatus}</h1> */}
                     <p style={{ margin: "auto" }} className="labelText">
                         New User?
                     </p>
+
                     <Link to="./Register">
                         <button className="login__registerButton">
                             <b>Create new account</b>

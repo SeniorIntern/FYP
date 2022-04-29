@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useHistory, useParams, Link } from "react-router-dom";
 import axios from "axios";
-import "./AddEdit.css";
+import "./AddResult.css";
 import "./Sidebar.css";
 // import "./AddStudent.css";
 import { ToastContainer, toast } from "react-toastify";
@@ -9,12 +9,11 @@ import "react-toastify/dist/ReactToastify.css";
 
 const initialState = {
     s_Id: "",
-    s_Fname: "",
-    s_Lname: "",
-    s_Batch: "",
-    c_Id: "",
-    Year: "",
-    Section: "",
+    CC12: "",
+    CC49: "",
+    TG406: "",
+    SG12: "",
+    Average: "",
 };
 
 const text__style = {
@@ -22,11 +21,11 @@ const text__style = {
     color: "white",
 };
 
-export const AddEdit = () => {
+export const AddResult = () => {
     const [state, setState] = useState(initialState);
 
     // destructuring from state
-    const { s_Id, s_Fname, s_Lname, s_Batch, c_Id, Year, Section } = state;
+    const { s_Id, CC12, CC49, TG406, SG12, Average } = state;
 
     const history = useHistory();
 
@@ -36,7 +35,7 @@ export const AddEdit = () => {
     // run only after getting id
     useEffect(() => {
         axios
-            .get(`http://localhost:5002/api/get/${id}`)
+            .get(`http://localhost:5002/smr/get/${id}`)
             .then((resp) => setState({ ...resp.data[0] }));
     }, [id]);
 
@@ -44,68 +43,56 @@ export const AddEdit = () => {
     const handleSubmit = (e) => {
         // prevent default behaviour of browser
         e.preventDefault();
-        if (
-            !s_Id ||
-            !s_Fname ||
-            !s_Lname ||
-            !s_Batch ||
-            !c_Id ||
-            !Year ||
-            !Section
-        ) {
+        if (!s_Id || !CC12 || !CC49 || !TG406 || !SG12 || !Average) {
             // alert("Please provide values");
             toast.error("Please provide values");
         } else {
             // if id exists then update else post
             if (!id) {
                 axios
-                    .post("http://localhost:5002/api/post", {
+                    .post("http://localhost:5002/smr/post", {
                         s_Id,
-                        s_Fname,
-                        s_Lname,
-                        s_Batch,
-                        c_Id,
-                        Year,
-                        Section,
+                        CC12,
+                        CC49,
+                        TG406,
+                        SG12,
+                        Average,
                     })
                     // clear input fields after use submits the value
                     .then(() => {
                         setState({
                             s_Id: "",
-                            s_Fname: "",
-                            s_Lname: "",
-                            s_Batch: "",
-                            c_Id: "",
-                            Year: "",
-                            Section: "",
+                            CC12: "",
+                            CC49: "",
+                            TG406: "",
+                            SG12: "",
+                            Average: "",
                         });
                     })
                     .catch((err) => toast.error(err.response.data));
                 // .catch((err) => alert(err.response.data));
-                toast.success("Student Added Sucessfully", {
+                toast.success("Values Updated Sucessfully", {
                     position: "top-center",
                 });
             } else {
                 axios
-                    .put(`http://localhost:5002/api/update/${id}`, {
+                    .put(`http://localhost:5002/smr/update/${id}`, {
                         s_Id,
-                        s_Fname,
-                        s_Lname,
-                        s_Batch,
-                        c_Id,
-                        Year,
-                        Section,
+                        CC12,
+                        CC49,
+                        TG406,
+                        SG12,
+                        Average,
                     })
                     // clear input fields after use submits the value
                     .then(() => {
                         setState({
                             s_Id: "",
-                            s_Fname: "",
-                            s_Lname: "",
-                            s_Batch: "",
-                            c_Id: "",
-                            Year: "",
-                            Section: "",
+                            CC12: "",
+                            CC49: "",
+                            TG406: "",
+                            SG12: "",
+                            Average: "",
                         });
                     })
                     .catch((err) => toast.error(err.response.data));
@@ -125,9 +112,9 @@ export const AddEdit = () => {
         setState({ ...state, [name]: value });
     };
 
-    const errNoti=()=>{
-toast.warn("Student with that Id already exists!")
-    }
+    // const errNoti = () => {
+    //     toast.warn("Student with that Id already exists!");
+    // };
 
     return (
         <div className="newStudent__Profile">
@@ -193,50 +180,42 @@ toast.warn("Student with that Id already exists!")
                         />
                         <input
                             type="text"
-                            name="s_Fname"
-                            id="s_Fname"
+                            name="CC12"
+                            id="CC12"
                             placeholder="Student First Name"
-                            value={s_Fname || ""}
+                            value={CC12 || ""}
                             onChange={handleInputChange}
                         />
                         <input
                             type="text"
-                            name="s_Lname"
-                            id="s_Lname"
+                            name="CC49"
+                            id="CC49"
                             placeholder="Student Last Name"
-                            value={s_Lname || ""}
+                            value={CC49 || ""}
                             onChange={handleInputChange}
                         />
                         <input
                             type="text"
-                            name="s_Batch"
-                            id="s_Batch"
+                            name="TG406"
+                            id="TG406"
                             placeholder="Student Batch"
-                            value={s_Batch || ""}
+                            value={TG406 || ""}
                             onChange={handleInputChange}
                         />
                         <input
                             type="text"
-                            name="c_Id"
-                            id="c_Id"
+                            name="SG12"
+                            id="SG12"
                             placeholder="Student Course ID"
-                            value={c_Id || ""}
+                            value={SG12 || ""}
                             onChange={handleInputChange}
                         />
                         <input
                             type="text"
-                            name="Year"
-                            id="Year"
-                            placeholder="Student Year"
-                            value={Year || ""}
-                            onChange={handleInputChange}
-                        />
-                        <input
-                            type="text"
-                            name="Section"
-                            id="Section"
-                            placeholder="Student Section"
-                            value={Section || ""}
+                            name="Average"
+                            id="Average"
+                            placeholder="Student Average"
+                            value={Average || ""}
                             onChange={handleInputChange}
                         />
                         <br />
@@ -251,7 +230,7 @@ toast.warn("Student with that Id already exists!")
                             type="submit"
                             className="actionBtn"
                             value="save"
-                            onClick={errNoti}
+                            // onClick={errNoti}
                         />
                         <br />
                         <Link to="/page">
@@ -263,4 +242,4 @@ toast.warn("Student with that Id already exists!")
         </div>
     );
 };
-export default AddEdit;
+export default AddResult;

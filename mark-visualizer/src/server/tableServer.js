@@ -37,16 +37,6 @@ app.post("/api/post", (req, res) => {
 });
 
 /*
-app.delete("/api/remove/:id", (req, res) => {
-    const { id } = req.params;
-    const sqlRemove = "DELETE FROM mark_visualizer.students WHERE id = ?";
-    db.query(sqlRemove, id, (error, result) => {
-        if (error) {
-            console.log(error);
-        }
-    });
-});
-
 // for view btn
 app.get("/api/get/:id", (req, res) => {
     const { id } = req.params;
@@ -58,6 +48,17 @@ app.get("/api/get/:id", (req, res) => {
         res.send(result);
     });
 });
+
+app.delete("/api/remove/:id", (req, res) => {
+    const { id } = req.params;
+    const sqlRemove = "DELETE FROM mark_visualizer.students WHERE id = ?";
+    db.query(sqlRemove, id, (error, result) => {
+        if (error) {
+            console.log(error);
+        }
+    });
+});
+
 
 app.put("/api/update/:id", (req, res) => {
     const { id } = req.params;
@@ -76,6 +77,58 @@ app.put("/api/update/:id", (req, res) => {
     );
 });
 */
+
+// setup for student-module-result
+app.get("/smr/get", (req, res) => {
+    const sqlGet = "SELECT * FROM mark_visualizer.student_moduleresult;";
+    db.query(sqlGet, (error, result) => {
+        res.send(result);
+    });
+});
+
+app.post("/smr/post", (req, res) => {
+    const { s_Id, CC12, CC49, TG406, SG12, Average } = req.body;
+    const sqlInsert =
+        "Insert Into mark_visualizer.student_moduleresult (s_Id,CC12,CC49,TG406,SG12,Average,) values(?, ?, ?, ?, ?, ?)";
+    db.query(
+        sqlInsert,
+        [s_Id, CC12, CC49, TG406, SG12, Average],
+        (error, result) => {
+            if (error) {
+                console.log(error);
+            }
+        }
+    );
+});
+
+app.get("/smr/get/:id", (req, res) => {
+    const { id } = req.params;
+    const sqlGet =
+        "SELECT * FROM mark_visualizer.student_moduleresult WHERE id=?";
+    db.query(sqlGet, id, (error, result) => {
+        if (error) {
+            console.log(error);
+        }
+        res.send(result);
+    });
+});
+
+app.put("/smr/update/:id", (req, res) => {
+    const { id } = req.params;
+    const { s_Id, CC12, CC49, TG406, SG12, Average } = req.body;
+    const sqlUpdate =
+        "UPDATE mark_visualizer.student_moduleresult SET s_Id=?, CC12=?,CC49=?, TG406=?, SG12=?, Average=? WHERE id=?";
+    db.query(
+        sqlUpdate,
+        [s_Id, CC12, CC49, TG406, SG12, Average, id],
+        (error, result) => {
+            if (error) {
+                console.log(error);
+            }
+            res.send(result);
+        }
+    );
+});
 
 app.get("/programmes/get", (req, res) => {
     const sqlGet = "SELECT * FROM mark_visualizer.programmes";
@@ -127,31 +180,6 @@ app.put("/programmes/update/:id", (req, res) => {
         }
         res.send(result);
     });
-});
-
-// setup for student-module-result
-app.get("/smr/get", (req, res) => {
-    const sqlGet = "SELECT * FROM mark_visualizer.student_moduleresult;";
-    db.query(sqlGet, (error, result) => {
-        res.send(result);
-    });
-});
-
-app.put("/smr/update/:id", (req, res) => {
-    const { id } = req.params;
-    const { s_Id, CC12, CC49, TG406, SG12, Average } = req.body;
-    const sqlUpdate =
-        "UPDATE mark_visualizer.student_moduleresult SET s_Id=?, CC12=?,CC49=?, TG406=?, SG12=?, Average=? WHERE id=?";
-    db.query(
-        sqlUpdate,
-        [s_Id, CC12, CC49, TG406, SG12, Average, id],
-        (error, result) => {
-            if (error) {
-                console.log(error);
-            }
-            res.send(result);
-        }
-    );
 });
 
 app.listen(5002, () => {
