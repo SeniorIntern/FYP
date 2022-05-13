@@ -8,21 +8,35 @@ import Register from "./Register";
 // import Sidebar from "./Sidebar";
 import { Programmes } from "./Programmes";
 import Results from "./Results";
-import { UserContext } from "./UserContext";
+// import { UserContext } from "./UserContext";
 import { useMemo, useState } from "react";
 import Prediction from "./Prediction";
-import Dashboard from "./Dashboard";
 import addResult from "./AddResult";
 
 function App() {
     // setup state for userContext
     const [user, setUser] = useState(null);
-    const providerValue = useMemo(() => ({ user, setUser }), [user, setUser]);
+    // const providerValue = useMemo(() => ({ user, setUser }), [user, setUser]);
 
     return (
         <Router>
             <div className="App">
                 <Switch>
+                    <Route path="/login">
+                        <Login />
+                    </Route>
+
+                    
+                    <Route path="/students">
+                        <Header />
+                        <Page />
+                    </Route>
+
+                    <Route path="/programmes">
+                        <Header />
+                        <Programmes />
+                    </Route>
+
                     <Route path="/smr/update/:id" component={addResult} />
 
                     <Route path="/results">
@@ -48,30 +62,14 @@ function App() {
                     <Route path="/register">
                         <Register />
                     </Route>
-                    
-                    <Route path="/login">
-                        <Login />
-                    </Route>
 
-                    {/* wrap pages with context provider */}
-                    <UserContext.Provider value={providerValue}>
-                        <Route path="/students">
-                            <Header />
-                            <Page />
-                        </Route>
-
-                        <Route path="/programmes">
-                            <Header />
-                            <Programmes />
-                        </Route>
-                    </UserContext.Provider>
 
                     {/* path-Analytics not working properly */}
                     <Route
                         path="/analytics"
                         component={() => {
                             window.location.href =
-                                "http://127.0.0.1:5500/visualization/lineChart.html";
+                                "http://127.0.0.1:5500/visualization/visualize.html";
                             return null;
                         }}
                     />
@@ -88,6 +86,10 @@ function App() {
                     {/* <Route exact path="/" component={} /> */}
                     <Route path="/update/:id" component={AddEdit} />
                     <Route path="/view/:id" component={View} />
+                    
+                    <Route path="/">
+                        <Login />
+                    </Route>
                 </Switch>
             </div>
         </Router>

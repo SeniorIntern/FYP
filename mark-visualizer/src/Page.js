@@ -72,7 +72,7 @@ export const Page = () => {
                         className="navbar__options"
                         onClick={(event) =>
                             (window.location.href =
-                                "http://127.0.0.1:5500/visualization/lineChart.html")
+                                "http://127.0.0.1:5500/visualization/visualize.html")
                         }
                     >
                         Analytics
@@ -97,26 +97,7 @@ export const Page = () => {
                     <Link to="/addStudent">
                         <button className="page_btn">Add Student</button>
                     </Link>
-                    {/* 
-                    <Link>
-                        <button className="page_btn">Filter</button>
-                    </Link> */}
                 </div>
-
-                {/* showing user context here */}
-                {/* <pre>{JSON.stringify(user, null, 2)}</pre>
-                {user ? (
-                    <button onClick={() => setUser(null)}>logout</button>
-                ) : (
-                    <button
-                        onClick={async () => {
-                            const user = await usrlogin();
-                            setUser(user);
-                        }}
-                    >
-                        login
-                    </button>
-                )} */}
 
                 <table className="styled-table">
                     <thead>

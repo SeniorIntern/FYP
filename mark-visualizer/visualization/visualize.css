@@ -1,0 +1,145 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial;
+}
+
+.dropbtn {
+    background-color: #04aa6d;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: rgba(0, 162, 255, 0.986);
+}
+
+.header__content {
+    top: 0;
+    z-index: 100;
+    align-items: center;
+    background-color: #24405c;
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+}
+
+.header__logo {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    margin: 0 20px;
+}
+
+.visualizations {
+    display: flex;
+    flex-direction: column;
+}
+
+.doubleRow {
+    display: flex;
+    flex-direction: row;
+    margin: 120px 0 140px 0;
+}
+
+.input {
+    margin: auto;
+    margin-top: 114px;
+}
+
+.line__chartCard {
+    display: flex;
+    align-items: center;
+    margin: auto;
+}
+
+.line__chartBox {
+    width: 80vw;
+    padding: 10px;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgb(66, 58, 58);
+    border: none;
+    background: white;
+}
+
+.space__maker {
+    width: 75%;
+}
+
+.header__option {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    margin-left: 24px;
+}
+
+.option__above {
+    font-size: large;
+    font-weight: bold;
+    color: white;
+}
+
+.option__below {
+    color: white;
+}
+
+.doughnut__chartCard {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.doughnut__chartBox {
+    width: 40vw;
+    padding: 10px;
+    border-radius: 20px;
+    border: none;
+    box-shadow: 0 0 20px rgb(66, 58, 58);
+    background: white;
+}
+
+.radar__chartCard {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.radar__chartBox {
+    width: 40vw;
+    padding: 10px;
+    border-radius: 20px;
+    border: none;
+    box-shadow: 0 0 20px rgb(66, 58, 58);
+    background: white;
+}

@@ -72,7 +72,7 @@ export const Results = () => {
                         className="navbar__options"
                         onClick={(event) =>
                             (window.location.href =
-                                "http://127.0.0.1:5500/visualization/lineChart.html")
+                                "http://127.0.0.1:5500/visualization/visualize.html")
                         }
                     >
                         Analytics

@@ -49,7 +49,7 @@ function Prediction() {
                         className="navbar__options"
                         onClick={(event) =>
                             (window.location.href =
-                                "http://127.0.0.1:5500/visualization/lineChart.html")
+                                "http://127.0.0.1:5500/visualization/visualize.html")
                         }
                     >
                         Analytics
@@ -71,9 +71,7 @@ function Prediction() {
                     {/* <img src={searchIco} style={ico} alt="" /> */}
 
                     {/* <Link to="/addStudent"> */}
-                    <button className="page_btn">
-                        Predict
-                    </button>
+                    <button className="page_btn">Predict</button>
                     {/* </Link> */}
                 </div>
                 <div className="studentDetails">

@@ -59,7 +59,7 @@ export const Programmes = () => {
                         Analytics
                     </div>
                 </Link>
-                <Link to="/Setting" style={text__style}>
+                <Link to="/prediction" style={text__style}>
                     <div className="navbar__options">Prediction</div>
                 </Link>
             </div>
