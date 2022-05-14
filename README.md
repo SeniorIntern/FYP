@@ -13,5 +13,7 @@ My Final Year Project work files here
 # open terminal inside server folder.
 </h2>
 mark-visualizer\src\server> nodemon analytics_server.js
+</br>
 mark-visualizer\src\server> nodemon authBackend.js
+</br>
 mark-visualizer\src\server> nodemon tableServer.js
