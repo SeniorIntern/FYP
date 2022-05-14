@@ -14,8 +14,9 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// top 5 students order by Average DESC
 app.get("/api/get", (req, res) => {
-    const sqlGet = "SELECT * FROM mark_visualizer.student_moduleresult";
+    const sqlGet = "SELECT * FROM student_moduleresult ORDER BY Average DESC LIMIT 5;";
     db.query(sqlGet, (error, result) => {
         res.send(result);
     });

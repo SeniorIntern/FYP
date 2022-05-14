@@ -1,0 +1,11 @@
+# To install necessary modules
+- Run "npm install" in terminal to install all necessary modules.
+- You can manually install modules using npm command.
+
+# To run project, use command "npm start".
+
+# To start necessary servers use following command lines in seperate terminals.
+# open terminal inside server folder.
+mark-visualizer\src\server> nodemon analytics_server.js
+mark-visualizer\src\server> nodemon authBackend.js
+mark-visualizer\src\server> nodemon tableServer.js

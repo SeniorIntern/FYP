@@ -76,12 +76,12 @@ function Prediction() {
                 </div>
                 <div className="studentDetails">
                     <div>
-                        <p>Student Name: Ram Krishna</p>
-                        <p>Batch: 2019 </p>
-                        <p>Current Year: 3rd</p>
+                        <p>Student Name: </p>
+                        <p>Batch: </p>
+                        <p>Current Year: </p>
                         <br />
-                        <h4>First Year Grade: 74</h4>
-                        <h4>Second Year Grade: 65</h4>
+                        <h4>First Year Grade: </h4>
+                        <h4>Second Year Grade: </h4>
                         <br />
                         <h3>Prediction for Final Year: 54</h3>
                     </div>
