@@ -17,10 +17,10 @@
 .table__options {
     display: flex;
     flex-direction: row;
-    justify-content: left;
+    justify-content: right;
     /* margin-bottom: 2%; */
     font-size: 20px;
-    margin-left: 20px;
+    margin: 0 auto 0 50%;
 }
 
 /* table border */

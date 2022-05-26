@@ -28,6 +28,7 @@ CREATE TABLE `sectionaverage` (
   `Y1C2` int NOT NULL,
   `Y1C3` int NOT NULL,
   `Y1C4` int NOT NULL,
+  `SecAverage` int NOT NULL,
   KEY `m_Code` (`m_Code`),
   CONSTRAINT `sectionaverage_ibfk_1` FOREIGN KEY (`m_Code`) REFERENCES `module` (`m_Code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -39,7 +40,7 @@ CREATE TABLE `sectionaverage` (
 
 LOCK TABLES `sectionaverage` WRITE;
 /*!40000 ALTER TABLE `sectionaverage` DISABLE KEYS */;
-INSERT INTO `sectionaverage` VALUES ('CC12',70,74,78,60),('CC49',80,67,74,70),('TG406',60,58,67,65),('SG12',75,80,80,74),('SG406',67,72,70,70),('SG101',58,65,70,70);
+INSERT INTO `sectionaverage` VALUES ('CC12',70,74,78,60,71),('CC49',80,67,74,70,73),('TG406',60,58,67,65,63),('SG12',75,80,80,74,77),('SG406',67,72,70,70,70),('SG101',58,65,70,70,66);
 /*!40000 ALTER TABLE `sectionaverage` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -52,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-05-14 21:51:58
+-- Dump completed on 2022-05-26  3:20:34

@@ -16,30 +16,34 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `coursemodule`
+-- Table structure for table `students`
 --
 
-DROP TABLE IF EXISTS `coursemodule`;
+DROP TABLE IF EXISTS `students`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `coursemodule` (
+CREATE TABLE `students` (
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `s_Id` int NOT NULL,
+  `s_Fname` varchar(25) NOT NULL,
+  `s_Lname` varchar(25) NOT NULL,
+  `s_Batch` int NOT NULL,
   `c_Id` varchar(25) NOT NULL,
-  `m_Code` varchar(25) NOT NULL,
-  KEY `c_Id` (`c_Id`),
-  KEY `m_Code` (`m_Code`),
-  CONSTRAINT `coursemodule_ibfk_1` FOREIGN KEY (`c_Id`) REFERENCES `course` (`c_Id`),
-  CONSTRAINT `coursemodule_ibfk_2` FOREIGN KEY (`m_Code`) REFERENCES `module` (`m_Code`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `Year` int DEFAULT NULL,
+  `Section` varchar(4) DEFAULT NULL,
+  PRIMARY KEY (`s_Id`),
+  KEY `id` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `coursemodule`
+-- Dumping data for table `students`
 --
 
-LOCK TABLES `coursemodule` WRITE;
-/*!40000 ALTER TABLE `coursemodule` DISABLE KEYS */;
-INSERT INTO `coursemodule` VALUES ('CS50','CC12'),('CS50','SG101');
-/*!40000 ALTER TABLE `coursemodule` ENABLE KEYS */;
+LOCK TABLES `students` WRITE;
+/*!40000 ALTER TABLE `students` DISABLE KEYS */;
+INSERT INTO `students` VALUES (5,19031002,'Sunil','Thapa',2019,'CS50',2019,'C5'),(6,19031003,'Hari','Shrestha',2019,'MS32',2019,'C3'),(1,19031007,'Nikhil','Thapa',2019,'CS50',2019,'C4'),(2,19031008,'Bipin','Chhetri',2019,'CS50',2019,'C5'),(3,19031009,'Nirmal','Khawas',2019,'CS50',2019,'C3'),(4,19031010,'Ram','Krishna',2019,'MS32',2019,'C3');
+/*!40000 ALTER TABLE `students` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -51,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-05-14 21:51:58
+-- Dump completed on 2022-05-26  3:20:34

@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import "./Page.css";
 import "./Sidebar.css";
+import editIco from "./img/edit.png";
+import delIco from "./img/delete.png";
 
 export const Programmes = () => {
     const [data, setData] = useState([]);
@@ -27,6 +29,12 @@ export const Programmes = () => {
             alert("Sucessfully Deleted");
             setTimeout(() => loadData(), 500);
         }
+    };
+
+    const ico = {
+        width: "36px",
+        height: "auto",
+        cursor: "pointer",
     };
 
     const text__style = {
@@ -60,11 +68,18 @@ export const Programmes = () => {
                     </div>
                 </Link>
                 <Link to="/prediction" style={text__style}>
-                    <div className="navbar__options">Prediction</div>
+                    <div
+                        className="navbar__options"
+                        onClick={(event) =>
+                            (window.location.href = "http://127.0.0.1:5000/")
+                        }
+                    >
+                        Prediction
+                    </div>
                 </Link>
             </div>
 
-            <div className="page-container">
+            <div className="page__container">
                 <table className="styled-table">
                     <thead>
                         <tr>
@@ -87,20 +102,24 @@ export const Programmes = () => {
                                     <td>{item.m_Code} </td>
                                     <td>{item.m_Name} </td>
                                     <td>
-                                        <Link to={`/update/${item.id}`}>
-                                            <button className="btn btn-edit">
-                                                Edit
-                                            </button>
-                                        </Link>
+                                        {/* <Link
+                                            to={`programmes/update/${item.id}`}
+                                        >
+                                            <img
+                                                src={editIco}
+                                                className="imgStyle"
+                                                alt=""
+                                            />
+                                        </Link> */}
 
-                                        <button
-                                            className="btn btn-delete"
+                                        <img
+                                            className="imgStyle"
+                                            src={delIco}
                                             onClick={() =>
                                                 deleteContact(item.id)
                                             }
-                                        >
-                                            Delete
-                                        </button>
+                                            alt=""
+                                        />
                                     </td>
                                 </tr>
                             );

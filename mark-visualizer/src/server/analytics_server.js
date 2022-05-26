@@ -16,7 +16,24 @@ app.use(express.urlencoded({ extended: true }));
 
 // top 5 students order by Average DESC
 app.get("/api/get", (req, res) => {
-    const sqlGet = "SELECT * FROM student_moduleresult ORDER BY Average DESC LIMIT 5;";
+    const sqlGet =
+        "SELECT * FROM student_moduleresult ORDER BY Average DESC LIMIT 5;";
+    db.query(sqlGet, (error, result) => {
+        res.send(result);
+    });
+});
+
+app.get("/topS/get", (req, res) => {
+    const sqlGet =
+        "SELECT * FROM student_moduleresult ORDER BY Average DESC LIMIT 1;";
+    db.query(sqlGet, (error, result) => {
+        res.send(result);
+    });
+});
+
+app.get("/lastS/get", (req, res) => {
+    const sqlGet =
+        "SELECT * FROM student_moduleresult ORDER BY Average ASC LIMIT 1;";
     db.query(sqlGet, (error, result) => {
         res.send(result);
     });

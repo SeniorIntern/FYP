@@ -16,28 +16,27 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `users`
+-- Table structure for table `course`
 --
 
-DROP TABLE IF EXISTS `users`;
+DROP TABLE IF EXISTS `course`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `users` (
-  `id` varchar(20) NOT NULL,
-  `username` varchar(10) NOT NULL,
-  `password` varchar(550) NOT NULL,
-  PRIMARY KEY (`id`)
+CREATE TABLE `course` (
+  `c_Id` varchar(25) NOT NULL,
+  `c_Name` varchar(25) NOT NULL,
+  PRIMARY KEY (`c_Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `users`
+-- Dumping data for table `course`
 --
 
-LOCK TABLES `users` WRITE;
-/*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES ('1','root','$2b$10$OLIpv3R7hDkFUs4jam.nOOt8tfEcmCnvDWb/N5aCy4Mapl47X4ole'),('2','nikhil','$2b$10$hzrhntkEcWpNHXIlqEfQYuq.CnISWYspldjjfj/28Tf9.IIIqdPPa'),('3','test','$2b$10$Y7twPq5y61Zu6Eiamp4cDeKUt6duRGtVBsy0W0DHOqFUDoneACmV.'),('4','Priyanka24','$2b$10$8PFFPQZgQc12VTEnwDazW.yn.39Y0DsNInFkkXXsMhn772nhJkcIW');
-/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+LOCK TABLES `course` WRITE;
+/*!40000 ALTER TABLE `course` DISABLE KEYS */;
+INSERT INTO `course` VALUES ('CS50','BIT'),('MS32','BBA');
+/*!40000 ALTER TABLE `course` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -49,4 +48,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-05-14 21:51:58
+-- Dump completed on 2022-05-26  3:20:33

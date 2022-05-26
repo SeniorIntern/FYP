@@ -57,8 +57,8 @@
                 <div class="space__maker"></div>
                 <div class="header__option">
                     <a style="text-decoration: none"
-                        ><span class="option__above">Hello Admin</span
-                        ><br /><span class="option__below">nikhil</span></a
+                        ><span class="option__above">Hello</span
+                        ><br /><span class="option__below">User</span></a
                     >
                 </div>
                 
@@ -81,20 +81,19 @@
                 <a href="http://localhost:3000/results">
                     <span>Results</span>
                 </a>
-                <a href="http://localhost:3000/analytics">
+                <a href="http://127.0.0.1:5500/visualization/visualize.html">
                     <span>
                         Analytics
                     </span>
                 </a>
-                <a href="http://localhost:3000/prediction">
+                <a href="http://127.0.0.1:5000/">
                     <span style="margin-right: 10px;">Prediction</span>
                 </a>
             </span>
         </div>
         
-        <!-- PAGE CONTENT: Students Performance on Individual Modules -->
         <div class="visualizations">
-            <!-- first(line) chart -->
+            <!-- Module performance chart -->
             <div
                 class="line__chartCard"
                 style="height: 80vh; width: 120vh;"
@@ -107,55 +106,27 @@
 
             <div class="doubleRow">
 
-                <!-- second(radar) chart -->
+                <!-- Section performance chart -->
                 <div
                     class="radar__chartCard"
                     style="height: 40vh; width: 60vh; margin: auto"
                 >
                     <div class="radar__chartBox">
                         <h4 style="text-align: center">
-                            <div class="dropdown">
-                                <button class="dropbtn">Choose Year</button>
-                                <div class="dropdown-content">
-                                <a href="#">Y1</a>
-                                <a href="#">Y2</a>
-                                <a href="#">Y3</a>
-                                </div>
-                            </div>
-                            <div class="dropdown">
-                                <button class="dropbtn">Choose Section</button>
-                                <div class="dropdown-content">
-                                <a href="#">C1</a>
-                                <a href="#">C2</a>
-                                <a href="#">C3</a>
-                                </div>
-                            </div>
+                            <p>Enable/Disable options to choose sections</p>
                             <canvas id="radar__chart"></canvas>
                         </h4>
                     </div>
                 </div>
 
-                <!-- third(doughnut) chart -->
+                <!-- Top Student comparison chart -->
                 <div
                     class="doughnut__chartCard"
                     style="height: 40vh; width: 60vh; margin: auto"
                 >
                     <div class="doughnut__chartBox">
                         <h4 style="text-align: center">
-                            <div class="dropdown">
-                                <button class="dropbtn">Choose Year</button>
-                                <div class="dropdown-content">
-                                <a href="#">Y1</a>
-                                <a href="#">Y2</a>
-                                <a href="#">Y3</a>
-                                </div>
-                            </div >
-                            <br>
-                            <input type="text" placeholder="First Student Id" style="margin-top: 10px;">
-                            <br>
-                            <input type="text" placeholder="Second Student Id" style="margin-top: 10px;">
-                            <br>
-                            <button style="width: 50px;margin-top: 10px; color:white ;background-color: #04aa6d;">Go</button>
+                            <p>Top performing student</p>                            
                         </h4>
                         <canvas id="doughnut__Chart"></canvas>
                     </div>
@@ -166,7 +137,7 @@
         <!-- include Chart.js in page -->
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-        <!-- first chart setup -->
+        <!-- Module performance chart setup -->
         <script>
             // AJAX SETUP
             const xmlhttp = new XMLHttpRequest();
@@ -221,7 +192,6 @@
                                 borderColor: "rgb(255, 0, 0)",
                                 data: Avggrade,
                             },
-
                             {
                                 label: "CC12-Module",
                                 backgroundColor: "rgb(76, 255, 0)",
@@ -266,99 +236,201 @@
             };
         </script>
 
-        <!-- second chart setup -->
+        <!-- Top Student comparison chart setup -->
         <script>
-            const doughnut__data = {
-                labels: ["CC12", "CC49", "TG406", "SG12"],
-                datasets: [
-                    {
-                        label: "My First Dataset",
-                        data: [65,70,40,45],
-                        backgroundColor: [
-                            "rgb(76, 255, 0)",
-                            "rgb(255, 255, 0)",
-                            "rgb(36, 64, 92)",
-                            "rgb(255, 0, 0)",
-                        ],
-                        hoverOffset: 4,
-                    },
-                    {
-                        label: "My First Dataset",
-                        data: [45,65,65,40],
-                        backgroundColor: [
-                        "rgb(76, 255, 0)",
-                            "rgb(255, 255, 0)",
-                            "rgb(36, 64, 92)",
-                            "rgb(255, 0, 0)",
-                        ],
-                        hoverOffset: 4,
-                    },
-                ],
-            };
+            // AJAX SETUP
+            const tlsxmlhttp = new XMLHttpRequest();
+            const tlsurl = "http://localhost:5005/topS/get/";
+
+            tlsxmlhttp.open("GET", tlsurl, true);
+            tlsxmlhttp.send();
 
             // state 4 is for complete state, and ErrorStatus at 200 or 400 as u like
+            tlsxmlhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    const datapoints = JSON.parse(this.responseText);
 
-            // doughnut_config for bar chart
-            const doughnut_config = {
-                type: "doughnut",
-                data: doughnut__data,
-            };
+                    //  CC12 data
+                    const tsCC12grade = datapoints.map(function (index) {
+                        return index.CC12;
+                    });
 
-            // render the chart
-            const doughnut__Chart = new Chart(
-                document.getElementById("doughnut__Chart"),
-                doughnut_config
-            );
+                    // CC49 data
+                    const tsCC49grade = datapoints.map(function (index) {
+                        return index.CC49;
+                    });
+
+                    // TG406 data
+                    const tsTG406grade = datapoints.map(function (index) {
+                        return index.TG406;
+                    });
+
+                    // SG12 data
+                    const tsSG12grade = datapoints.map(function (index) {
+                        return index.SG12;
+                    });
+
+                    const doughnut__data = {
+                        labels: ["CC12", "CC49", "TG406", "SG12"],
+                        datasets: [
+                            {
+                                label: "My First Dataset",
+                                data: [tsCC12grade,tsCC49grade,tsTG406grade,tsSG12grade],
+                                backgroundColor: [
+                                    "rgb(76, 255, 0)",
+                                    "rgb(255, 255, 0)",
+                                    "rgb(36, 64, 92)",
+                                    "rgb(255, 0, 0)",
+                                ],
+                                hoverOffset: 4,
+                            },
+                        ],
+                        
+                    };
+
+                    // state 4 is for complete state, and ErrorStatus at 200 or 400 as u like
+
+                    // doughnut_config for bar chart
+                    const doughnut_config = {
+                        type: "doughnut",
+                        data: doughnut__data,
+                    };
+
+                    // render the chart
+                    const doughnut__Chart = new Chart(
+                        document.getElementById("doughnut__Chart"),
+                        doughnut_config
+                    );
+                }
+            }
         </script>
 
-        <!-- third chart setup -->
+        <!-- Section performance chart setup -->
         <script>
-            const radar__data = {
-                labels: ["CC12", "CC49", "TG406", "SG12"],
-                
-                datasets: [
-                    {
-                        label: "Year3 Section C4",
-                        data: [65, 59, 90, 81],
-                        fill: true,
-                        backgroundColor: "rgba(255, 99, 132, 0.2)",
-                        borderColor: "rgb(255, 99, 132)",
-                        pointBackgroundColor: "rgb(255, 99, 132)",
-                        pointBorderColor: "#fff",
-                        pointHoverBackgroundColor: "#fff",
-                        pointHoverBorderColor: "rgb(255, 99, 132)",
-                    },
-                    {
-                        label: "Year3 Average",
-                        data: [28, 48, 40, 19],
-                        fill: true,
-                        backgroundColor: "rgba(54, 162, 235, 0.2)",
-                        borderColor: "rgb(54, 162, 235)",
-                        pointBackgroundColor: "rgb(54, 162, 235)",
-                        pointBorderColor: "#fff",
-                        pointHoverBackgroundColor: "#fff",
-                        pointHoverBorderColor: "rgb(54, 162, 235)",
-                    },
-                ],
-            };
+            // AJAX SETUP
+            const smxmlhttp = new XMLHttpRequest();
+            const surl = "http://localhost:5005/sectionAverage/get/";
 
-            const radar_config = {
-                type: "radar",
-                data: radar__data,
-                options: {
-                    elements: {
-                        line: {
-                            borderWidth: 3,
+            smxmlhttp.open("GET", surl, true);
+            smxmlhttp.send();
+
+            // state 4 is for complete state, and ErrorStatus at 200 or 400 as u like
+            smxmlhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    const datapoints = JSON.parse(this.responseText);
+
+                    // Dataset 1
+                    const sm_Y1Average = datapoints.map(function (index) {
+                        return index.SecAverage;
+                    }); 
+
+                    const sm_Y1C1grade = datapoints.map(function (index) {
+                        return index.Y1C1;
+                    });                    
+
+                    // Dataset
+                    const sm_Y1C2grade = datapoints.map(function (index) {
+                        return index.Y1C2;
+                    });
+                    // Dataset
+                    const sm_Y1C3grade = datapoints.map(function (index) {
+                        return index.Y1C3;
+                    });
+                    // Dataset
+                    const sm_Y1C4grade = datapoints.map(function (index) {
+                        return index.Y1C4;
+                    });
+
+                    // for labels: Modules
+                    const sm_labels = datapoints.map(function (index) {
+                        return index.m_Code;
+                    });
+
+                    // setup for bar chart
+                    const labels = sm_labels;
+
+                    // console.log(labels);
+
+                    const radar__data = {
+                        labels: labels,
+                        datasets: [
+                            {
+                                label: "Section C1",
+                                data: sm_Y1C1grade,
+                                fill: true,
+                                backgroundColor: "rgba(255,0,0, 0.2)",
+                                borderColor: "rgb(255, 0, 0)",
+                                pointBackgroundColor: "rgb(255, 0, 0)",
+                                pointBorderColor: "#fff",
+                                pointHoverBackgroundColor: "#fff",
+                                pointHoverBorderColor: "rgb(255, 0, 0)",
+                            },
+                            {
+                                label: "Section C2",
+                                data: sm_Y1C2grade,
+                                fill: true,
+                                backgroundColor: "rgba(0, 255, 0, 0.2)",
+                                borderColor: "rgb(0, 255, 0)",
+                                pointBackgroundColor: "rgb(0, 255, 235)",
+                                pointBorderColor: "#fff",
+                                pointHoverBackgroundColor: "#fff",
+                                pointHoverBorderColor: "rgb(0, 255, 235)",
+                            },
+                            {
+                                label: "Section C3",
+                                data: sm_Y1C3grade,
+                                fill: true,
+                                backgroundColor: "rgba(255,255,147, 0.2)",
+                                borderColor: "rgb(255, 255, 0)",
+                                pointBackgroundColor: "rgb(255, 255, 0)",
+                                pointBorderColor: "#fff",
+                                pointHoverBackgroundColor: "#fff",
+                                pointHoverBorderColor: "rgb(255, 255, 0)",
+                            },
+                            {
+                                label: "Section C4",
+                                data: sm_Y1C4grade,
+                                fill: true,
+                                backgroundColor: "rgba(54, 162, 235, 0.2)",
+                                borderColor: "rgb(54, 162, 235)",
+                                pointBackgroundColor: "rgb(54, 162, 235)",
+                                pointBorderColor: "#fff",
+                                pointHoverBackgroundColor: "#fff",
+                                pointHoverBorderColor: "rgb(54, 162, 235)",
+                            },
+                            {
+                                label: "Average",
+                                data: sm_Y1Average,
+                                fill: true,
+                                backgroundColor: "rgba(0, 0, 0, 0.2)",
+                                borderColor: "rgb(0, 0, 0)",
+                                pointBackgroundColor: "rgb(0, 0, 0)",
+                                pointBorderColor: "#fff",
+                                pointHoverBackgroundColor: "#fff",
+                                pointHoverBorderColor: "rgb(0, 0, 0)",
+                            },
+                        ],
+                    };
+
+                    const radar_config = {
+                        type: "radar",
+                        data: radar__data,
+                        options: {
+                            elements: {
+                                line: {
+                                    borderWidth: 3,
+                                },
+                            },
                         },
-                    },
-                },
-            };
+                    };
 
-            // render the chart
-            const radar__chart = new Chart(
-                document.getElementById("radar__chart"),
-                radar_config
-            );
+                    // render the chart
+                    const radar__chart = new Chart(
+                        document.getElementById("radar__chart"),
+                        radar_config
+                    );
+                }
+            }
         </script>
     </body>
 </html>

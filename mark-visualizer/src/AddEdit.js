@@ -125,9 +125,9 @@ export const AddEdit = () => {
         setState({ ...state, [name]: value });
     };
 
-    const errNoti=()=>{
-toast.warn("Student with that Id already exists!")
-    }
+    // const errNoti = () => {
+    //     toast.warn("Student with that Id already exists!");
+    // };
 
     return (
         <div className="newStudent__Profile">
@@ -170,7 +170,7 @@ toast.warn("Student with that Id already exists!")
                 </Link>
             </div>
 
-            {/* studnet */}
+            {/* student form */}
             <div className="page__container">
                 {/* <ToastContainer theme="dark" /> */}
                 <div>
@@ -251,10 +251,9 @@ toast.warn("Student with that Id already exists!")
                             type="submit"
                             className="actionBtn"
                             value="save"
-                            onClick={errNoti}
                         />
                         <br />
-                        <Link to="/page">
+                        <Link to="/students">
                             <input type="button" value="Go Back" />
                         </Link>
                     </form>

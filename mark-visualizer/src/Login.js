@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Axios from "axios";
 import "./Login.css";
 // additional imports for testing
@@ -6,6 +6,7 @@ import { Link, useHistory } from "react-router-dom";
 import logo from "./img/logo.png";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { UserContext } from "./UserContext";
 
 function Login() {
     const history = useHistory(); // change url after login
@@ -13,12 +14,6 @@ function Login() {
     // Defining useStates
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-
-    // for testing
-    // const [loginStatus, setLoginStatus] = useState("");
-
-    // added later
-    // Axios.defaults.withCredentials = true;
 
     const login = () => {
         // define variables username, password to use in backend
@@ -28,11 +23,9 @@ function Login() {
         }).then((response) => {
             if (response.data.message) {
                 toast.error(response.data.message);
-                // setLoginStatus();
             } else {
                 window.location.href =
                     "http://127.0.0.1:5500/visualization/dashboard.html";
-                // setLoginStatus(response.data[0].username);
                 toast.success(
                     "Login Sucessful. Welcome " +
                         response.data[0].username +

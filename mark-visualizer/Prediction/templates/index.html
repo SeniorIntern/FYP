@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Prediction</title>
+        <link rel="icon" type="image/x-icon" href="../public/faviconIcon.ico">
+        <link
+            rel="stylesheet"
+            type="text/css"
+            media="screen"
+            href="{{ url_for('static', filename='css/main.css') }}"
+        />
+        <script src="main.js"></script>
+        <style>
+            .header__content {
+                top: 0;
+                z-index: 100;
+                align-items: center;
+                background-color: #24405c;
+                height: 60px;
+                display: flex;
+                flex-direction: row;
+            }
+
+            .header__logo {
+                width: 48px;
+                height: 48px;
+                object-fit: contain;
+                margin: 0 20px;
+            }
+
+            a{
+                text-decoration: none;
+                /* color: white; */
+                color: black;
+                font-family: Arial;
+            }
+            
+            .dashNavbar {
+                top: 0;
+                z-index: 100;
+                align-items: center;
+                background-color: #24405c;
+                height: 60px;
+                display: flex;
+                flex-direction: row;
+                margin: auto;
+                width: fit-content;
+                margin-bottom: 20px;
+                height: 40px;
+                border-radius: 1rem;
+                color: white;
+                /* margin-bottom: 20px; */
+                margin-top: 50px;
+            }
+
+            .dashNavbar span{
+                color: white;
+                margin-left: 20px;
+                font-family: Arial;
+                font-weight: bold;
+            }
+        </style>
+    </head>
+
+    <body>
+        <!-- navigation bar -->
+        <div class="dashNavbar">
+                <a href="http://localhost:3000/students" >
+                    <span>Students</span>
+                </a>
+
+                <a href="http://localhost:3000/programmes">
+                    <span>Programs</span>
+                </a>
+                <a href="http://localhost:3000/results">
+                    <span>Results</span>
+                </a>
+                <a href="http://127.0.0.1:5500/visualization/visualize.html">
+                    <span>
+                        Analytics
+                    </span>
+                </a>
+                <a href="http://127.0.0.1:5000/">
+                    <span style="margin-right: 10px;">Prediction</span>
+                </a>
+            </span>
+        </div>
+
+        <div class="register_page">
+            <div class="form">
+                <form action="{{url_for('predict')}}" method="POST">
+                    First Year Grade:
+                    <input
+                        type="number"
+                        name="G1"
+                        placeholder="Enter First Year Grade"
+                    /><br />
+                    Second Year Grade:
+                    <input
+                        type="number"
+                        name="G2"
+                        placeholder="Enter Second Year Grade"
+                    /><br />
+                    <input type="submit" value="predict" class="submit" />
+                </form>
+                <p>Third Year Grade is: {{data}}</p>
+            </div>
+        </div>
+    </body>
+</html>

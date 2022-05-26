@@ -98,7 +98,7 @@ export const AddResult = () => {
                     .catch((err) => toast.error(err.response.data));
                 // .catch((err) => alert(err.response.data));
 
-                toast.success("Student Added Sucessfully");
+                toast.success("Result Added Sucessfully");
             }
 
             // redirect to student page after 500ms
@@ -111,10 +111,6 @@ export const AddResult = () => {
         const { name, value } = e.target;
         setState({ ...state, [name]: value });
     };
-
-    // const errNoti = () => {
-    //     toast.warn("Student with that Id already exists!");
-    // };
 
     return (
         <div className="newStudent__Profile">
@@ -153,11 +149,18 @@ export const AddResult = () => {
                     </div>
                 </Link>
                 <Link to="/prediction" style={text__style}>
-                    <div className="navbar__options">prediction</div>
+                    <div
+                        className="navbar__options"
+                        onClick={(event) =>
+                            (window.location.href = "http://127.0.0.1:5000/")
+                        }
+                    >
+                        Prediction
+                    </div>
                 </Link>
             </div>
 
-            {/* studnet */}
+            {/* student module result form*/}
             <div className="page__container">
                 {/* <ToastContainer theme="dark" /> */}
                 <div>
@@ -182,7 +185,7 @@ export const AddResult = () => {
                             type="text"
                             name="CC12"
                             id="CC12"
-                            placeholder="Student First Name"
+                            placeholder="CC12 result"
                             value={CC12 || ""}
                             onChange={handleInputChange}
                         />
@@ -190,7 +193,7 @@ export const AddResult = () => {
                             type="text"
                             name="CC49"
                             id="CC49"
-                            placeholder="Student Last Name"
+                            placeholder="CC49 result"
                             value={CC49 || ""}
                             onChange={handleInputChange}
                         />
@@ -198,7 +201,7 @@ export const AddResult = () => {
                             type="text"
                             name="TG406"
                             id="TG406"
-                            placeholder="Student Batch"
+                            placeholder="TG406 result"
                             value={TG406 || ""}
                             onChange={handleInputChange}
                         />
@@ -206,7 +209,7 @@ export const AddResult = () => {
                             type="text"
                             name="SG12"
                             id="SG12"
-                            placeholder="Student Course ID"
+                            placeholder="SG12 result"
                             value={SG12 || ""}
                             onChange={handleInputChange}
                         />
@@ -214,26 +217,25 @@ export const AddResult = () => {
                             type="text"
                             name="Average"
                             id="Average"
-                            placeholder="Student Average"
+                            placeholder="Average result"
                             value={Average || ""}
                             onChange={handleInputChange}
                         />
                         <br />
-                        {/* 
+
                         <input
                             type="submit"
                             className="actionBtn"
                             value={id ? "Update" : "save"}
                         />
- */}
-                        <input
+
+                        {/* <input
                             type="submit"
                             className="actionBtn"
                             value="save"
-                            // onClick={errNoti}
-                        />
+                        /> */}
                         <br />
-                        <Link to="/page">
+                        <Link to="/students">
                             <input type="button" value="Go Back" />
                         </Link>
                     </form>

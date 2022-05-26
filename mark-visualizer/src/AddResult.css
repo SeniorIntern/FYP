@@ -17,7 +17,7 @@
 .table__options {
     display: flex;
     flex-direction: row;
-    justify-content: left;
+    /* justify-content: left; */
     margin-bottom: 2%;
     font-size: 20px;
     margin-left: 20px;

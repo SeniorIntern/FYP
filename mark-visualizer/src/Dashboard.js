@@ -65,26 +65,11 @@ function Dashboard() {
                     <Link to="/addStudent">
                         <button className="page_btn">Add Student</button>
                     </Link>
-                    {/* 
-                    <Link>
-                        <button className="page_btn">Filter</button>
-                    </Link> */}
+                        {/* 
+                        <Link>
+                            <button className="page_btn">Filter</button>
+                        </Link> */}
                 </div>
-
-                {/* showing user context here */}
-                {/* <pre>{JSON.stringify(user, null, 2)}</pre>
-                {user ? (
-                    <button onClick={() => setUser(null)}>logout</button>
-                ) : (
-                    <button
-                        onClick={async () => {
-                            const user = await usrlogin();
-                            setUser(user);
-                        }}
-                    >
-                        login
-                    </button>
-                )} */}
             </div>
         </div>
     );

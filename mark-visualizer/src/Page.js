@@ -39,19 +39,6 @@ export const Page = () => {
         cursor: "pointer",
     };
 
-    // user context message setup
-    // const { user, setUser } = useContext(UserContext);
-    /*
-    toast.success("Welcome Nikhil", {
-        position: "top-center",
-        autoClose: 9000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-    });
-    */
     return (
         <div className="student__page">
             {/* <ToastContainer /> */}
@@ -79,23 +66,34 @@ export const Page = () => {
                     </div>
                 </Link>
                 <Link to="/prediction" style={text__style}>
-                    <div className="navbar__options">Prediction</div>
+                    <div
+                        className="navbar__options"
+                        onClick={(event) =>
+                            (window.location.href = "http://127.0.0.1:5000/")
+                        }
+                    >
+                        Prediction
+                    </div>
                 </Link>
             </div>
 
             {/* student table */}
             <div className="page__container">
                 <div className="table__options">
-                    <input
+                    {/* <input
                         type="text"
                         placeholder="Student ID"
                         style={{ width: "fit-content" }}
                     />
-                    <FcSearch style={ico} />
-                    {/* <img src={searchIco} style={ico} alt="" /> */}
+                    <FcSearch style={ico} /> */}
 
                     <Link to="/addStudent">
-                        <button className="page_btn">Add Student</button>
+                        <button
+                            className="page_btn"
+                            style={{ textAlign: "center" }}
+                        >
+                            Add Student
+                        </button>
                     </Link>
                 </div>
 
@@ -130,7 +128,7 @@ export const Page = () => {
                         })}
                     </tbody>
                 </table>
-                <p style={{ color: "blue", textAlign: "right" }}>1,2,3,..8</p>
+                {/* <p style={{ color: "blue", textAlign: "right" }}>1,2,3,..8</p> */}
             </div>
         </div>
     );

@@ -79,26 +79,22 @@ export const Results = () => {
                     </div>
                 </Link>
                 <Link to="/prediction" style={text__style}>
-                    <div className="navbar__options">Prediction</div>
+                    <div
+                        className="navbar__options"
+                        onClick={(event) =>
+                            (window.location.href = "http://127.0.0.1:5000/")
+                        }
+                    >
+                        Prediction
+                    </div>
                 </Link>
             </div>
 
             <div className="result__container">
                 <div className="table__options">
-                    <input
-                        type="text"
-                        placeholder="Student ID"
-                        style={{ width: "fit-content" }}
-                    />
-                    <FcSearch style={ico} />
-
                     <Link to="/addResult">
                         <button className="page_btn">Add Result</button>
                     </Link>
-                    {/* 
-                    <Link>
-                        <button className="page_btn">Filter</button>
-                    </Link> */}
                 </div>
                 <table className="styled-table">
                     <thead>
@@ -156,7 +152,7 @@ export const Results = () => {
                         })}
                     </tbody>
                 </table>
-                <p style={{ color: "blue", textAlign: "right" }}>1,2,3,..8</p>
+                {/* <p style={{ color: "blue", textAlign: "right" }}>1,2,3,..8</p> */}
             </div>
         </div>
     );

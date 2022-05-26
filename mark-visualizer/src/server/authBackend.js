@@ -1,6 +1,3 @@
-// VIDEO PROGRESS - 22:22
-// importing necessary modules
-// importing necessary modules
 const express = require("express");
 const mysql = require("mysql");
 const app = express(); // create express server on variable(app)
@@ -97,6 +94,8 @@ app.post("/login", (req, res) => {
                         if (response) {
                             req.session.user = result;
                             console.log(req.session.user);
+                            // display username
+                            // console.log(result[0].username);
                             res.send(result);
                         } else {
                             res.send({
