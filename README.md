@@ -17,3 +17,7 @@ mark-visualizer\src\server> nodemon analytics_server.js
 mark-visualizer\src\server> nodemon authBackend.js
 </br>
 mark-visualizer\src\server> nodemon tableServer.js
+</br>
+mark-visualizer\visualization> Run locally
+</br>
+mark-visualizer\Prediction> python app.py
